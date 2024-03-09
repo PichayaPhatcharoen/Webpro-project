@@ -1,0 +1,80 @@
+.head {
+    background-color: #FFD2A8;
+    width: 100%; height: 76px;
+    margin: 0px;
+    padding: 24px 0px 0px 10px;
+}
+body {
+    margin: 0%;
+    background-color: #FFFAF7;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+}
+
+.box {
+    margin: 50px 200px 100px 200px;
+}
+.sbox {
+    background-color: #FFE0C4;
+    width: 800px;
+    height: 380px;
+    border-radius: 20px;
+}
+#job {
+    float: right;
+    background-color: #cd7e56;
+    margin: 20px 40px 40px 40px;
+    width: 180px; height: 50px;
+    border-radius: 25px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: aliceblue;
+}
+.buttons {
+    float: right;
+    margin: 20px 350px 20px 10px;
+    padding: 20px;
+}
+#edit {
+    background-color: #F9EE99;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+}
+#submit {
+    background-color: #6BDBC4;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px 10px 20px;
+}
+i {
+    color: #000000;
+    font-size: 20px;
+}
+#arrow {
+    float: left;
+    background-color: #FFD2A8;
+    margin-top: 14px;
+    border: none;
+}
+h1 {
+    display: inline;
+}
+label{
+    float: right;
+}
+#jobx {
+    float: left;
+    margin-left: 16px;
+}
+#info {
+    padding-left: 17px;
+    margin: 10px 0px 10px 20px;
+}
+tr {
+    height: 45px; 
+}
+td {
+    width: 145px;
+}

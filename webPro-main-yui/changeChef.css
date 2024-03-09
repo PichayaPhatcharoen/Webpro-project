@@ -1,0 +1,85 @@
+.head {
+    background-color: #FFC6BB;
+    width: 100%; height: 76px;
+    margin: 0px;
+    padding: 24px 0px 0px 10px;
+}
+body {
+    margin: 0%;
+    background-color: #FFFAF7;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+}
+
+.box {
+    margin: 50px 50px 100px 100px;
+}
+
+#numtable {
+    font-size: 25px;
+    font-weight: bold;
+}
+#list{
+    margin: 0px;
+}
+
+#list {
+    margin: 0px 20px 0px 30px;
+    padding: 0px 0px 0px 10px;
+    width: 500px;
+    height: 80px;
+    /* background-color: bisque; */
+}
+
+#boxlist {
+    width: 150px;
+    height: 40px;
+    float: left;
+}
+
+#name {
+    margin-bottom: 0%;
+    font-size: 20px;
+}
+
+#price {
+    float: left;
+    margin-top: 0%;
+    font-size: 12px;
+}
+
+#num {
+    float: right;
+    margin-top: 0%;
+    font-size: 12px;
+}
+
+#change {
+    float: right;
+    width: 150px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#b_change {
+    background-color: #FFD6B0;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 15px 10px 15px;
+}
+i {
+    color: #000000;
+    font-size: 20px;
+}
+#arrow {
+    float: left;
+    background-color: #FFC6BB;
+    margin-top: 17px;
+    border: none;
+}
+h1 {
+    display: inline;
+}

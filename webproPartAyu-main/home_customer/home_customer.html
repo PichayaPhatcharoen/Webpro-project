@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"">
+    <title>Home_customer</title>
+
+    <!-- tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <!-- icon > -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <!-- font kanit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fahkwang:wght@200;400;500&family=Itim&family=Josefin+Sans&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:wght@100&family=Single+Day&family=Taviraj:wght@200;500&family=Ubuntu&family=Ubuntu+Mono&display=swap" rel="stylesheet">
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        *{
+            font-family: "Kanit", sans-serif;
+            position: relative;
+        }
+        
+        body{
+            background-color: #FFFAF7;
+        }
+
+        .backkie{
+            height: 600px;
+        }
+
+        .backspecial{
+            background-color: #F9C7C6;
+        }
+
+        .eclipse1st{
+            top: 16%;
+            left: -35px;
+            background-color: #FFB0B9;
+            width: 450px;
+            height: 300px;
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .eclipse2nd{
+            top: 60%;
+            left: 10px;
+            background-color: #FFD6B0;
+            width: 300px;
+            height: 150px;
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .eclipse3nd{
+            top: 56%;
+            left: -32px;
+            background-color: #FFD6B0;
+            width: 300px;
+            height: 150px;
+            border-radius: 50%;
+            z-index: -1;
+            box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .cheese{
+            top: -23%;
+        }
+
+        /* .circle1st{
+            top: 400px;
+            background-color: #ADCEC3;
+            width: 100vw;
+            height: 250px;
+            z-index: -1;
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+        } */
+
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+
+        .z00m{
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .z00m:hover{
+            transform: scale(1.05);
+        }
+
+        .menuho:hover{
+            color: #ff8cb0;
+        }
+
+        .shopping{
+            color: #FF7686;
+        }
+
+        .choosie{
+            height: 300px;
+            background-color: #ADCEC3;
+        }
+
+        .title{
+            background-color: #FFFAF7;
+            padding: 40px;
+            border-radius: 100%;
+        }
+
+        .backmenu{
+            background-color: #2D2D2D;
+        }
+
+        .rose{
+            background-color: #F9C7C6;
+        }
+
+        .rose2{
+            background-color: #fb9594;
+        }
+
+        .purple{
+            background-color: #D6BEDC;
+        }
+
+        .purple2{
+            background-color: #ab89b4;
+        }
+
+        .yellow{
+            background-color: #FFD6B0;
+        }
+
+        .yellow2{
+            background-color: #ffb977;
+        }
+
+        .pink{
+            background-color: #ffbad0;
+        }
+
+        .pink2{
+            background-color: #ff8cb0;
+        }
+
+        .green{
+            background-color: #ADCEC3;
+        }
+
+        .green2{
+            background-color: #699c8b;
+        }
+
+        .cart{
+            cursor: pointer;
+        }
+
+        /* @media screen {
+            img { */
+                /* max-width: fit-content; 
+                max-height: fit-content;
+                object-fit: contain; */
+                /* display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center; */
+            /* }
+        } */
+</style>
+        
+
+    </style>
+</head>
+<body>
+    <!-- navbar -->
+    <nav>
+        <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
+            <div class="flex space-x-6 items-center">
+                <a href="./home_customer.html">
+                    <img src="./logo_1.png" alt="logo" class="rounded-full h-16 w-16 animate-pulse">
+                </a>
+                <p>Fern n Friends Cafe</p>
+            </div>
+            <div class="flex space-x-12">
+                <a href="">
+                    <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
+                </a>
+                <a href="">
+                    <p class="menuho">รีวิวอาหาร</p>
+                </a>
+                <a href="">
+                    <span class="material-symbols-outlined shopping">
+                        shopping_cart
+                        </span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- topthree -->
+    <!-- <div class="flex justify-center">
+        <div class="circle1st absolute"></div>
+    </div> -->
+    <div class="flex justify-between pt-16 pl-32 pr-32">
+        <div class="pt-2">
+            <div>
+                <p class="text-6xl font-medium">เมนู<br>พิเศษ !</p>
+                <p class="backspecial w-44 text-center">สำหรับคนพิเศษแบบคุณ ~</p>
+            </div>
+            <div class="pt-8 pl-12">
+                <div class="eclipse2nd absolute"></div>
+                <a href="#two">
+                    <img class="h-auto w-56 object-contain z00m" src="./แพนเค้กฟูครีม.png" alt="แพนเค้กฟูครีม">
+                </a>
+            </div>
+            <div class="text-xl font-medium text-center pl-8 pt-14"><p>แพนเค้กฟูครีม</p></div>
+        </div>
+
+        <div class="">
+            <div class="eclipse1st absolute"></div>
+            <a href="#one">
+                <img class="h-auto w-96 object-contain z00m" src="./ปังวิปครีมนุ่ม.png" alt="ปังครีมนุ่ม">
+            </a>
+            <div class="text-2xl font-medium text-center pt-20"><p>ปังครีมนุ่ม</p></div>
+            <div class="text-xl text-center pt-10">
+                <a href="#choosie">
+                    <p>Menu<br></p>
+                    <span class="material-symbols-outlined animate-bounce">
+                        expand_more
+                        </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="pt-48 pr-12">
+            <div class="eclipse3nd absolute"></div>
+            <a href="#three">
+                <img class="h-auto w-60 object-contain z00m" src="./ช็อกโกบลูเบอร์รี่.png" alt="ช็อกโกบลูเบอร์รี่">
+            </a>
+            <div class="text-xl font-medium text-center pt-12"><p>ช็อกโกบลูเบอร์รี่</p></div>
+        </div>
+    </div>
+
+    <!-- choose -->
+    <div class="choosie flex justify-center items-center space-x-56" id="choosie">
+        <div class="title">
+            <a href="#dessert">
+                <img class="w-28 z00m" src="./dessert.png" alt="dessert">
+            </a>
+            <p class="absolute pt-12 pl-6 font-medium">ของหวาน</p>
+        </div>
+        <div class="title">
+            <a href="#drinks">
+                <img class="w-28 z00m" src="./drinks.png" alt="drinks">
+            </a>
+            <p class="absolute pt-12 pl-6 font-medium">เครื่องดื่ม</p>
+        </div>
+    </div>
+
+    
+
+    <!-- menu dessert -->
+    <div>
+        <div class="pt-16 pr-24 pl-24 pb-20 space-y-2" >
+            <p class="text-6xl pt-8" id="dessert">เมนู<br></p>
+            <p class="text-xl w-28 text-center backmenu text-white">ของหวาน</p>
+        </div>
+
+        <div class="flex justify-between pl-32 pr-32">
+            <div class="pink w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-48 z00m" src="./ราสเบอร์รี่เค้ก.png" alt="ราสเบอร์รี่เค้ก">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ราสเบอร์รี่เค้ก</p>
+                        <p class="text-xl">110 ฿</p>
+                    </div>
+                    <div class="pink2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center">
+                    <img class="w-44 z00m" src="./สวีทตี้โดรายากิ.png" alt="สวีทตี้โดรายากิ">
+                </div>
+                <div class="pl-10 pr-10 pt-2 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">สวีทตี้โดรายากิ</p>
+                        <p class="text-xl">120 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-14">
+                    <img class="w-64 z00m" src="./ปังช็อกโกบานาน่า.png" alt="ปังช็อกโกบานาน่า">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ปังช็อกโกบานาน่า</p>
+                        <p class="text-xl">65 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="green w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-56 z00m" src="./แพนเค้กดั้งเดิม.png" alt="แพนเค้กดั้งเดิม">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">แพนเค้กดั้งเดิม</p>
+                        <p class="text-xl">100 ฿</p>
+                    </div>
+                    <div class="green2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="rose w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-2">
+                    <img class="w-48 z00m" src="./เลเยอร์เชอร์รี่.png" alt="เลเยอร์เชอร์รี่">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">เลเยอร์เชอร์รี่</p>
+                        <p class="text-xl">140 ฿</p>
+                    </div>
+                    <div class="rose2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-60 z00m" src="./วาฟเฟิลสกู้ปคิส.png" alt="วาฟเฟิลสกู้ปคิส">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">วาฟเฟิลสกู้ปคิส</p>
+                        <p class="text-xl">120 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-60 z00m" src="./มัฟฟินโอริโอ้.png" alt="มัฟฟินโอริโอ้">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">มัฟฟินโอริโอ้</p>
+                        <p class="text-xl">100 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="pink w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-60 z00m" src="./ชีสเค้กมะม่วง.png" alt="ชีสเค้กมะม่วง">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ชีสเค้กมะม่วง</p>
+                        <p class="text-xl">130 ฿</p>
+                    </div>
+                    <div class="pink2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="green w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img id="one" class="w-60 z00m" src="./ปังวิปครีมนุ่ม.png" alt="ปังวิปครีมนุ่ม">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ปังครีมนุ่ม</p>
+                        <p class="text-xl">100 ฿</p>
+                    </div>
+                    <div class="green2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="rose w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-64 z00m" src="./ไอศกรีมไจแอ้นท์.png" alt="ไอศกรีมไจแอ้นท์">
+                </div>
+                <div class="pl-10 pr-10 pt-10 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ไอศกรีมไจแอ้นท์</p>
+                        <p class="text-xl">165 ฿</p>
+                    </div>
+                    <div class="rose2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-4">
+                    <img class="w-60 z00m" src="./บิสกิตคุกกี้.png" alt="บิสกิตคุกกี้">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">บิสกิตคุกกี้</p>
+                        <p class="text-xl">55 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-56 z00m" src="./เค้กส้มจี๊ด.png" alt="เค้กส้มจี๊ด">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">เค้กส้มจี๊ด</p>
+                        <p class="text-xl">85 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="green w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img class="w-56 z00m" src="./ครัวซองช็อกโก.png" alt="ครัวซองช็อกโก">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ครัวซองช็อกโก</p>
+                        <p class="text-xl">50 ฿</p>
+                    </div>
+                    <div class="green2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="pink w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img id="two" class="w-52 z00m" src="./แพนเค้กฟูครีม.png" alt="แพนเค้กฟูครีม">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">แพนเค้กฟูครีม</p>
+                        <p class="text-xl">130 ฿</p>
+                    </div>
+                    <div class="pink2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-2">
+                    <img class="w-44 z00m" src="./บราวนี่เครป.png" alt="บราวนี่เครป">
+                </div>
+                <div class="pl-10 pr-10 pt-4 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">บราวนี่เครป</p>
+                        <p class="text-xl">90 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8">
+                    <img id="three" class="w-56 z00m" src="./ช็อกโกบลูเบอร์รี่.png" alt="ช็อกโกบลูเบอร์รี่">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ช็อกโกบลูเบอร์รี่</p>
+                        <p class="text-xl">140 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="rose w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-10">
+                    <img class="w-48 z00m" src="./เบอร์รี่ชีสเค้ก.png" alt="เบอร์รี่ชีสเค้ก">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">เบอร์รี่ชีสเค้ก</p>
+                        <p class="text-xl">100 ฿</p>
+                    </div>
+                    <div class="rose2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="green w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-6">
+                    <img class="w-56 z00m" src="./โดนัทคาราเมล.PNG" alt="โดนัทคาราเมล">
+                </div>
+                <div class="pl-10 pr-10 pt-8 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">โดนัทคาราเมล</p>
+                        <p class="text-xl">45 ฿</p>
+                    </div>
+                    <div class="green2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="pink w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-2 pr-4">
+                    <img class="w-72 z00m" src="./คัพเค้กช็อกโกแลต.PNG" alt="คัพเค้กช็อกโกแลต">
+                </div>
+                <div class="pl-10 pr-10 pt-6 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">คัพเค้กช็อกโกแลต</p>
+                        <p class="text-xl">55 ฿</p>
+                    </div>
+                    <div class="pink2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-4 pr-4">
+                    <img class="w-56 z00m" src="./โดนัทช็อกโกแลต.PNG" alt="โดนัทช็อกโกแลต">
+                </div>
+                <div class="pl-10 pr-10 pt-6 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">โดนัทช็อกโกแลต</p>
+                        <p class="text-xl">45 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>  
+            </div>
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-6">
+                    <img class="w-60 z00m" src="./เค้กกล้วยหอม.PNG" alt="เค้กกล้วยหอม">
+                </div>
+                <div class="pl-10 pr-10 pt-6 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">เค้กกล้วยหอม</p>
+                        <p class="text-xl">45 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+    <hr class="border border-gray-400 mx-28 mt-28">
+
+    <!-- menu drinks -->
+    <div>
+        <div class="pt-16 pr-24 pl-24 pb-20 space-y-2" >
+            <p class="text-6xl pt-8" id="drinks">เมนู<br></p>
+            <p class="text-xl w-32 text-center backmenu text-white">เครื่องดื่ม</p>
+        </div>
+
+        <div class="flex justify-between pl-32 pr-32">
+            <div class="green w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-4">
+                    <img class="w-64 z00m" src="./ชาสตรอว์เบอร์รี.png" alt="ชาสตรอว์เบอร์รี">
+                </div>
+                <div class="pl-10 pr-10 pt-6 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ชาสตรอว์เบอร์รี</p>
+                        <p class="text-xl">85 ฿</p>
+                    </div>
+                    <div class="green2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="rose w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-4">
+                    <img class="w-36 z00m" src="./ชานมไข่มุกดั้งเดิม.png" alt="ชานมไข่มุกดั้งเดิม">
+                </div>
+                <div class="pl-10 pr-10 pt-4 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ชานมไข่มุกดั้งเดิม</p>
+                        <p class="text-xl">60 ฿</p>
+                    </div>
+                    <div class="rose2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center cheese">
+                    <img class="w-36 z00m" src="./ชาเขียวนุ่มชีส.png" alt="ชาเขียวนุ่มชีส">
+                </div>
+                <div class="pl-10 pr-10 flex justify-between cheese pt-1">
+                    <div class="">
+                        <p class="text-xl">ชาเขียวนุ่มชีส</p>
+                        <p class="text-xl">90 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center cheese">
+                    <img class="w-36 z00m" src="./นมปั่นสครอว์เบอร์รี่.png" alt="นมปั่นสครอว์เบอร์รี่">
+                </div>
+                <div class="pl-10 pr-10 cheese pt-4 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">นมปั่นสตรอว์เบอร์รี่</p>
+                        <p class="text-xl">60 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="pink w-96 h-96 rounded-3xl">
+                <div class="flex justify-center -top-24">
+                    <img class="w-32 z00m" src="./นมปั่นมะม่วง.png" alt="นมปั่นมะม่วง">
+                </div>
+                <div class="pl-10 pr-10 pt-2 flex cheese justify-between">
+                    <div class="">
+                        <p class="text-xl">นมปั่นมะม่วง</p>
+                        <p class="text-xl">50 ฿</p>
+                    </div>
+                    <div class="pink2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="green w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-8 -top-28">
+                    <img class="w-52 z00m" src="./นมปั่นโอริโอ้.png" alt="นมปั่นโอริโอ้">
+                </div>
+                <div class="pl-10 pr-10 -top-28 pt-3 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">นมปั่นโอริโอ้</p>
+                        <p class="text-xl">65 ฿</p>
+                    </div>
+                    <div class="green2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between pl-32 pr-32 pt-16">
+            <div class="pink w-96 h-96 rounded-3xl">
+                <div class="flex justify-center pt-2">
+                    <img class="w-44 z00m" src="./มัชชะลาเต้.png" alt="มัชชะลาเต้">
+                </div>
+                <div class="pl-10 pr-10 pt-1 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">มัชชะลาเต้</p>
+                        <p class="text-xl">60 ฿</p>
+                    </div>
+                    <div class="pink2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="purple w-96 h-96 rounded-3xl">
+                <div class="flex justify-center -top-12">
+                    <img class="w-44 z00m" src="./นมปั่นคาราเมล.png" alt="นมปั่นคาราเมล">
+                </div>
+                <div class="pl-10 pr-10 pt-3 -top-14 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">นมปั่นคาราเมล</p>
+                        <p class="text-xl">60 ฿</p>
+                    </div>
+                    <div class="purple2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+            <div class="yellow w-96 h-96 rounded-3xl">
+                <div class="flex justify-center -top-4">
+                    <img class="w-40 z00m" src="./ช็อกโกวิป.png" alt="ช็อกโกวิป">
+                </div>
+                <div class="pl-10 pr-10 flex justify-between">
+                    <div class="">
+                        <p class="text-xl">ช็อกโกวิป</p>
+                        <p class="text-xl">65 ฿</p>
+                    </div>
+                    <div class="yellow2 rounded-full h-full">
+                        <img id="cart" class="w-14 cart" src="./cart.png" alt="cart">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- end -->
+    <div class=" pt-36">
+        <div class="backmenu w-full text-white text-center font-extralight"><p>Fern n Friend Cafe</p></div>
+    </div>
+    
+</body>
+</html>

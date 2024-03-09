@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Status-Chef</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="changeChef.css" />
+        
+</head>
+
+<body>
+    <div class="head">
+        <button id="arrow"><a
+            href="addEmp.html" style="text-decoration:none; color: #000;">
+            <i class="fa-solid fa-arrow-left"></i></a>
+        </button>
+        <h1 style="padding: 30px; margin: 0%;">เปลี่ยนสถานะอาหาร</h1>
+    </div>
+    <div class="box">
+        <div class="sbox">
+            <p id="numtable">โต๊ะ 6</p>
+            <div id="lists">
+                <div id="list">
+                    <div id="boxlist">
+                        <p id="name">บานอฟฟี่</p>
+                        <p id="price">100 ฿</p>
+                        <p id="num">x4</p>
+                    </div>
+                    <div id="change">
+                        <button id="b_change">เตรียมอาหารเสร็จสิ้น</button>
+                    </div>
+                </div>
+                <div id="list">
+                    <div id="boxlist">
+                        <p id="name">โดนัทช็อกโกแลต</p>
+                        <p id="price">50 ฿</p>
+                        <p id="num">x1</p>
+                    </div>
+                    <div id="change">
+                        <button id="b_change">เตรียมอาหารเสร็จสิ้น</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $(list).remove();
+            });
+        });
+    </script>
+</body>
+
+</html>
