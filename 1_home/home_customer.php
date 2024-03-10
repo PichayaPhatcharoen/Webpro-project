@@ -198,7 +198,7 @@
                     <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
                 </a>
                 <a href="../5_reviewpage/review.php">
-                    <p class="menuho">รีวิวอาหาร</p>
+                    <p class="menuho2">รีวิวอาหาร</p>
                 </a>
                 <a href="../3_cart/cart.php">
                     <span class="material-symbols-outlined shopping">
@@ -305,6 +305,7 @@
     <div class="mx-2 md:mx-24 flex items-center justify-center">  
         <div class="thebakery container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-5 xl:gap-11">
         <?php
+            $tableNum = $_GET['tableNum'];
             $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
             $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id DESC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
@@ -328,7 +329,7 @@
                         </div>
                     </div>
                     <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                        <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
+                        <button onclick="addbakerytocart('.$bakery_name.','.$tableNum.')"><img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
                     </div>
                 </div>';
                 $counter++;
@@ -361,6 +362,7 @@
     <div class="mx-2 md:mx-24 flex items-center justify-center">  
         <div class="thedrinks container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3    xl:gap-11 gap-5">
             <?php
+                $tableNum = $_GET['tableNum'];
                 $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
                 $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id DESC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
@@ -388,7 +390,7 @@
                             </div>
                         </div>
                         <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                            <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
+                            <button onclick="selectaddon('.$drink_name.','.$tableNum.')"><img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart"></button>
                         </div>
                     </div>';
                     $counter++;
@@ -397,6 +399,15 @@
         </div>
 
     </div>
+    <script>
+        function selectaddon(drinkName, tableNum) {
+            // Construct the URL with query parameters
+            const url = `selectaddon.php?drinkName=${drinkName}&tableNum=${tableNum}`;
+            
+            // Redirect to the selectaddon page with the query parameters
+            window.location.href = url;
+            }
+    </script>
 
     <!-- end -->
 
