@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="orders.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,16 +14,32 @@
 <body class="bg-cus-order">
     <header>
         <div class="header2 bg-cus-order">
-            <div class="flex justify-between ">
+            <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
+                <div class="flex space-x-6 items-center">
+                    <a href="../1_home/home_manager.php">
+                        <img src="../1_home/elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
+                    </a>
+                    <p>Fern n Friends Cafe</p>
+                </div>
+                <div class="flex space-x-12">
+                    <a href="../2_order/emp_order.php">
+                        <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
+                    </a>
+                    <a href="../1_home/home_manager.php">
+                        <p class="menuho2">จัดการรายการอาหาร</p>
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="flex justify-between ">
                 <div class="header2-left flex items-center gap-0 md:gap-10 ">
                     <a href="#profile" class="logo rounded-full object-cover flex items-center justify-center overflow-hidden" alt="logo"></a>
                     <a href="#webname" class="webname">Fern n Friends café</a>
                 </div>
                 <div class="header2-right flex items-center gap-0 md:gap-10">
-                    <a href="#order">รายการคำสั่งซื้ออาหาร</a>
-                    <a href="#edit">จัดการรายการอาหาร</a>
+                    <a href="#order" class="menuho">รายการคำสั่งซื้ออาหาร</a>
+                    <a href="#edit" class="menuho2">จัดการรายการอาหาร</a>
                 </div>
-            </div>
+            </div> -->
         </div>    
     </header>
     <div class="tableselect bg-status-done  flex flex-row justify-around py-6">

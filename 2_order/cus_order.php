@@ -28,7 +28,7 @@
                 <a href="../5_reviewpage/review.php">
                     <p class="menuho2">รีวิวอาหาร</p>
                 </a>
-                <a href="">
+                <a href="../3_cart/cart.php">
                     <span class="material-symbols-outlined shopping">
                         shopping_cart
                         </span>

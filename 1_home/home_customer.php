@@ -173,9 +173,13 @@
         z-index: 9999;
     }
 
-    .menuho:hover{
+    .menuho{
         color: #ff8cb0;
     }
+    .menuho2:hover{
+        text-decoration:underline;
+    }
+
 </style>
         
 
@@ -196,7 +200,7 @@
                 <a href="../5_reviewpage/review.php">
                     <p class="menuho">รีวิวอาหาร</p>
                 </a>
-                <a href="">
+                <a href="../3_cart/cart.php">
                     <span class="material-symbols-outlined shopping">
                         shopping_cart
                         </span>

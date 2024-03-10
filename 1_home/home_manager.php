@@ -169,8 +169,12 @@
         z-index: 9999;
     }
 
-    .menuho:hover{
+
+    .menuho{
         color: #ff8cb0;
+    }
+    .menuho2:hover{
+        text-decoration:underline;
     }
 </style>
 
@@ -181,14 +185,14 @@
     <nav>
         <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
             <div class="flex space-x-6 items-center">
-                <a href="./home_manager.html">
+                <a href="">
                     <img src="./elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
                 </a>
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
-                <a href="">
-                    <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
+                <a href="../2_order/emp_order.php">
+                    <p class="menuho2">รายการคำสั่งซื้ออาหาร</p>
                 </a>
                 <a href="">
                     <p class="menuho">จัดการรายการอาหาร</p>
