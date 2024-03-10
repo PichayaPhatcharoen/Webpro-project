@@ -177,6 +177,7 @@
         color: #ff8cb0;
     }
 </style>
+
         
 
 <body>
@@ -306,7 +307,7 @@
         <div class="thebakery container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-5 xl:gap-11">
         <?php
             $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-            $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id DESC');
+            $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id ASC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
             $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
             $counter = 0;
@@ -362,7 +363,7 @@
         <div class="thedrinks container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3    xl:gap-11 gap-5">
             <?php
                 $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-                $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id DESC');
+                $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id ASC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
                 $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
                 $counter = 0;

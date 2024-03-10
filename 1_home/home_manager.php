@@ -329,7 +329,7 @@
                         </div>
                     </div>
                     <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                        <img id="bin" class="w-9 bin" src="./elements/bin.png" alt="bin">
+                        <button onclick="deletefrombakery(\'' . $bakery_name . '\')"><img id="bin" class="w-9 h-9" src="./elements/bin.png" alt="bin"></button>
                     </div>
                 </div>';
                 $counter++;
@@ -389,7 +389,7 @@
                             </div>
                         </div>
                         <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                            <img id="bin" class="w-9 bin" src="./elements/bin.png" alt="bin">
+                            <button onclick="deletefromdrinks(\'' . $drink_name . '\')"><img id="bin" class="w-9 h-9" src="./elements/bin.png" alt="bin"></button>
                         </div>
                     </div>';
                     $counter++;
@@ -398,12 +398,39 @@
         </div>
 
     </div>
-
     <!-- end -->
 
     <div class=" pt-36">
         <div class="backmenu w-full text-white text-center font-extralight"><p>Fern n Friend Cafe</p></div>
     </div>
-    
+
+    <script>
+        function deletefrombakery(menuname){
+            if (confirm('Are you sure you want to delete ' + menuname + '?')) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                };
+                xhttp.open("POST", "delete_bakery.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("bakery_name=" + menuname);
+            }
+        }
+        function deletefromdrinks(menuname){
+            if (confirm('Are you sure you want to delete ' + menuname + '?')) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        location.reload();
+                    }
+                };
+                xhttp.open("POST", "delete_drinks.php", true);
+                xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhttp.send("drink_name=" + encodeURIComponent(menuname));
+            }
+        }
+    </script>
 </body>
 </html>
