@@ -163,7 +163,7 @@
         background-color: #588576;
     }
 
-    .bin{
+    .bin, .cart{
         cursor: pointer;
     }
 
@@ -177,7 +177,6 @@
         color: #ff8cb0;
     }
 </style>
-
         
 
 <body>
@@ -185,17 +184,22 @@
     <nav>
         <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
             <div class="flex space-x-6 items-center">
-                <a href="./home_manager.html">
+                <a href="./home_customer.php">
                     <img src="./elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
                 </a>
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
-                <a href="">
+                <a href="../2_order/cus_order.php">
                     <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
                 </a>
+                <a href="../5_reviewpage/review.php">
+                    <p class="menuho">รีวิวอาหาร</p>
+                </a>
                 <a href="">
-                    <p class="menuho">จัดการรายการอาหาร</p>
+                    <span class="material-symbols-outlined shopping">
+                        shopping_cart
+                        </span>
                 </a>
             </div>
         </div>
@@ -274,23 +278,14 @@
     </div>
 
     <div id="stickyDiv" class="flex flex-col gap-5 fixed bottom-0 left-0 mb-10 ml-6 z-50">
-        <a href="#dessert" class="z-50 green2 rounded-full flex items-center justify-center text-center w-16 h-16 z-50 z00m2">
+        <a href="#dessert" class="z-50 green2 rounded-lg flex items-center justify-center text-center w-16 h-16 z-50 z00m2">
             <img class="w-12" src="./elements/dessert.png" alt="dessert">
         </a>
-        <a href="#drinks" class="z-50 green2 rounded-full flex items-center justify-center text-center w-16 h-16 z-50  z00m2">
+        <a href="#drinks" class="z-50 green2 rounded-lg flex items-center justify-center text-center w-16 h-16 z-50  z00m2">
             <img class="w-12" src="./elements/drinks.png" alt="drinks">
         </a>
     </div>
     
-    
-   
-    <!-- add + menu nav -->
-    <a href="home_addmenu.php">
-        <div class=" green2 text-white text-7xl font-extralight fixed rounded-full justify-center items-center text-center bottom-0 right-0 mb-10 mr-5 z-50 w-20 h-20 z00m2">
-            +
-        </div>
-    </a>
-
     <!-- menu dessert -->
     <div class="">
         <div class="flex justify-between">
@@ -307,7 +302,7 @@
         <div class="thebakery container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-5 xl:gap-11">
         <?php
             $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-            $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id ASC');
+            $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id DESC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
             $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
             $counter = 0;
@@ -329,7 +324,7 @@
                         </div>
                     </div>
                     <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                        <img id="bin" class="w-9 bin" src="./elements/bin.png" alt="bin">
+                        <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
                     </div>
                 </div>';
                 $counter++;
@@ -363,7 +358,7 @@
         <div class="thedrinks container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3    xl:gap-11 gap-5">
             <?php
                 $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-                $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id ASC');
+                $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id DESC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
                 $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
                 $counter = 0;
@@ -389,7 +384,7 @@
                             </div>
                         </div>
                         <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                            <img id="bin" class="w-9 bin" src="./elements/bin.png" alt="bin">
+                            <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
                         </div>
                     </div>';
                     $counter++;

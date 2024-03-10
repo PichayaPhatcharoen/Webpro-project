@@ -17,10 +17,6 @@
 </head>
 <style>
     
-    /* .move-up{
-        position: relative;
-        top: -35px; 
-    } */
     html {
         scroll-behavior: smooth;
     }
@@ -274,10 +270,10 @@
     </div>
 
     <div id="stickyDiv" class="flex flex-col gap-5 fixed bottom-0 left-0 mb-10 ml-6 z-50">
-        <a href="#dessert" class="z-50 green2 rounded-full flex items-center justify-center text-center w-16 h-16 z-50 z00m2">
+        <a href="#dessert" class="z-50 green2 rounded-lg flex items-center justify-center text-center w-16 h-16 z-50 z00m2">
             <img class="w-12" src="./elements/dessert.png" alt="dessert">
         </a>
-        <a href="#drinks" class="z-50 green2 rounded-full flex items-center justify-center text-center w-16 h-16 z-50  z00m2">
+        <a href="#drinks" class="z-50 green2 rounded-lg flex items-center justify-center text-center w-16 h-16 z-50  z00m2">
             <img class="w-12" src="./elements/drinks.png" alt="drinks">
         </a>
     </div>

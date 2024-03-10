@@ -4,30 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="orders.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>ORDER</title>
 </head>
 <body>
-    <header>
-        <div class="header">
-            <div class="header flex justify-between ">
-                <div class="header-left flex items-center gap-0 md:gap-10">
-                    <a href="#profile" class="logo rounded-full object-cover flex items-center justify-center overflow-hidden" alt="logo"></a>
-                    <a href="#default" class="webname">Fern n Friends café</a>
-                </div>
-                <div class="header-right flex items-center gap-0 md:gap-10">
-                    <a href="#home">หน้าหลัก</a>
-                    <a href="review.php">รีวิวร้านอาหาร</a>
-                    <a href="#about" class="cart-icon rounded-full"></a>
-                </div>
+    <nav>
+        <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
+            <div class="flex space-x-6 items-center">
+                <a href="../1_home/home_customer.php">
+                    <img src="../1_home/elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
+                </a>
+                <p>Fern n Friends Cafe</p>
             </div>
-            <hr>
+            <div class="flex space-x-12">
+                <a href="">
+                    <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
+                </a>
+                <a href="../5_reviewpage/review.php">
+                    <p class="menuho2">รีวิวอาหาร</p>
+                </a>
+                <a href="">
+                    <span class="material-symbols-outlined shopping">
+                        shopping_cart
+                        </span>
+                </a>
+            </div>
         </div>
-    </header>
+    </nav>
+
     <div class="mx-auto max-w-screen-lg ml:auto mb-10">
         <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
         <div class="item_1 container flex justify-around lg:justify-between mb-10">

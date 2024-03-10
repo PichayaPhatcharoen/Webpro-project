@@ -124,6 +124,18 @@ body{
   background-color: #ADCEC3; /* Your desired background color */
 }
 
+.shopping{
+  color: #FF7686;
+}
+
+.menuho{
+  color: #ff8cb0;
+}
+
+.menuho2:hover{
+  text-decoration: underline;
+}
+
 .header,.header2 {
   overflow: hidden;
   padding: 20px 10px;
