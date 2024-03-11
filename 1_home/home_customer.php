@@ -427,7 +427,7 @@
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
-            body: "item_id=" + bakery_id + "&tableNum=" + tableNum
+            body: "item_id=" + bakery_id + "&tableNum=" + tableNum + "&menutype=bakery"
         }).then(response => {
             if (response.ok) {
                 alert('Item added to cart');
@@ -439,26 +439,23 @@
         });
     }
 
-
-
-
-function adddrinktocart(drink_id, tableNum){
-    var size = document.getElementById('sizeSelect_' + drink_id).value;
-    if(size == "0") {
-        alert('กรุณาเลือกขนาดเครื่องดื่ม');
-        return;
-    } else {
-        fetch('addtocart.php', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            body: 'item_id=' + drink_id + '&size=' + size + '&tableNum=' + tableNum
-        })
-        .then(response => response.ok ?  alert('Item added to cart') : alert('Failed to add item to cart'))
-        .catch(error => console.error('Error adding drink to cart:', error));
+    function adddrinktocart(drink_id, tableNum){
+        var size = document.getElementById('sizeSelect_' + drink_id).value;
+        if(size == "0") {
+            alert('กรุณาเลือกขนาดเครื่องดื่ม');
+            return;
+        } else {
+            fetch('addtocart.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: 'item_id=' + drink_id + '&size=' + size + '&tableNum=' + tableNum + '&menutype=drink'
+            })
+            .then(response => response.ok ?  alert('Item added to cart') : alert('Failed to add item to cart'))
+            .catch(error => console.error('Error adding drink to cart:', error));
+        }
     }
-}
 </script>
 
     <!-- end -->
