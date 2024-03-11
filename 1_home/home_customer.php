@@ -305,7 +305,10 @@
     <div class="mx-2 md:mx-24 flex items-center justify-center">  
         <div class="thebakery container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-5 xl:gap-11">
         <?php
-            $tableNum = $_GET['tableNum'];
+            $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
+            if ($tableNum < 1 || $tableNum > 6) {
+                $tableNum = 1;
+            }
             $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
             $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id DESC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
@@ -329,7 +332,9 @@
                         </div>
                     </div>
                     <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                        <button onclick="addbakerytocart('.$bakery_name.','.$tableNum.')"><img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
+                        <button onclick="adddrinktocart('.$bakery_id.','.$tableNum.')">
+                            <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
+                        </button>
                     </div>
                 </div>';
                 $counter++;
@@ -362,7 +367,10 @@
     <div class="mx-2 md:mx-24 flex items-center justify-center">  
         <div class="thedrinks container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3    xl:gap-11 gap-5">
             <?php
-                $tableNum = $_GET['tableNum'];
+                $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
+                if ($tableNum < 1 || $tableNum > 6) {
+                    $tableNum = 1;
+                }
                 $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
                 $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id DESC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
@@ -376,21 +384,32 @@
                     $price_small = $row['price_small'];
                     $price_med = $row['price_med'];
                     $price_large = $row['price_large'];
+                    $size;
 
                     echo '<div class="' . $colors[$counter % count($colors)] . ' rounded-3xl grid grid-rows-2" id="item_' . $drink_id . '">
                         <div class="flex justify-center h-48 md:h-64 lg:h-80 2-xl:96 pt-4 move-up">
                             <img class="z00m object-cover overflow-visible" src="' . $drink_picture_path . '" alt="' . $drink_name . '">
                         </div>
-                        <div class="pt-10 text-center move-up">
+                        <div class="pt-10 text-center ">
                             <div class="h-full">
                                 <p class="text-xl">' . $drink_name . '</p>
                                 <p class="text-xl">S: ' . $price_small . ' ฿</p>
                                 <p class="text-xl">M: ' . $price_med . ' ฿</p>
                                 <p class="text-xl">L: ' . $price_large . ' ฿</p>
+                                <div>
+                                    <select id="sizeSelect_' . $drink_id . '" class="rounded-lg mt-4">
+                                        <option value="0">เลือกขนาด</option>
+                                        <option value="small">Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="large">Large</option>
+                                    </select>  
+                                </div>
                             </div>
                         </div>
                         <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                            <button onclick="selectaddon('.$drink_name.','.$tableNum.')"><img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart"></button>
+                        <button onclick="adddrinktocart('.$drink_id.','.$tableNum.')">
+                        <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
+                        </button>
                         </div>
                     </div>';
                     $counter++;
@@ -400,12 +419,21 @@
 
     </div>
     <script>
-        function selectaddon(drink_name, tableNum) {
-           
+
+        function addbakerytocart(menuname, tableNum){
+
         }
-        function addbakerytocart(bakery_name, tableNum){
-            
+        function adddrinktocart(drink_id, tableNum){
+            var sizeSelectId = 'sizeSelect_' + drink_id;
+            size = document.getElementById(sizeSelectId).value;
+            if (size =="0") {
+                alert('กรุณาเลือกขนาดเครื่องดื่ม');
+                return;
+            } else {
+                //add to cart process
+            }
         }
+
     </script>
 
     <!-- end -->
