@@ -15,19 +15,19 @@
 <nav>
         <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
             <div class="flex space-x-6 items-center">
-                <a href="../1_home/home_customer.php">
+                <a href="../1_home/home_customer.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <img src="../1_home/elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
                 </a>
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
-                <a href="../2_order/cus_order.php">
+                <a href="../2_order/cus_order.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <p class="menuho2">รายการคำสั่งซื้ออาหาร</p>
                 </a>
-                <a href="../5_reviewpage/review.php">
+                <a href="../5_reviewpage/review.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <p class="menuho">รีวิวอาหาร</p>
                 </a>
-                <a href="../3_cart/cart.php">
+                <a href="../3_cart/cart.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <span class="material-symbols-outlined shopping">
                         shopping_cart
                         </span>

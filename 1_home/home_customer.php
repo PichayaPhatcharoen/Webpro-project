@@ -194,10 +194,10 @@
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
-                <a href="../2_order/cus_order.php?">
+                <a href="../2_order/cus_order.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
                 </a>
-                <a href="../5_reviewpage/review.php">
+                <a href="../5_reviewpage/review.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <p class="menuho2">รีวิวอาหาร</p>
                 </a>
                 <a href="../3_cart/cart.php?tableNum=<?php echo $_GET['tableNum'] ?>">

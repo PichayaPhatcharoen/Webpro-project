@@ -151,9 +151,11 @@
           }
           $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
           $cart_table = 'cart_' . $tableNum;
-
           $stmt = $pdo->query("SELECT * FROM $cart_table ORDER BY id ASC");
-        
+          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $menu_name = $row['bakery_name'];
+            $price = $row['price'];
+          }
         ?>
     </div>
 
