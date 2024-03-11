@@ -204,28 +204,49 @@
   </body>
 
   <script>
-      $('body').on('click', '.btn-plus, .btn-minus', function() {
-          var inputId = '#cake-number_' + $(this).data('id');
-          var input = $(inputId);
-          var quantity = parseInt(input.val());
-          if($(this).hasClass('btn-minus')){
-              if(quantity > 0){
-                  quantity -= 1;
-              }
-          } else {
-              quantity += 1;
-          }
-          input.val(quantity);
-          
-          var menuPrice = parseFloat(input.data('price'));
-          $(input).parent().next().find('.total_menuprice').html((quantity * menuPrice).toFixed(2));
-          
-          var total = 0.00;
-          $('.total_menuprice').each(function() {
-              total += parseFloat($(this).html());
-          });
-          $('#sub-total').html(total.toFixed(2));
-      });
-  </script>
+    $('body').on('click', '.btn-plus, .btn-minus', function() {
+        var inputId = '#cake-number_' + $(this).data('id');
+        var input = $(inputId);
+        var quantity = parseInt(input.val());
+        if($(this).hasClass('btn-minus')){
+            if(quantity > 1){
+                quantity -= 1;
+            } else {
+                // Show alert and delete item from cart
+                if(confirm('Are you sure you want to delete this item from your cart?')){
+                    var menuId = $(this).data('id');
+                    var tableNum = <?php echo $_GET['tableNum']; ?>;
+                    $.ajax({
+                        url: 'delete_item.php',
+                        type: 'POST',
+                        data: {tableNum: tableNum, menuId: menuId},
+                        success: function(response) {
+                            // Reload the page or update the cart UI
+                            location.reload();
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Error deleting item');
+                        }
+                    });
+                } else {
+                    return false; // Do nothing if user cancels
+                }
+            }
+        } else {
+            quantity += 1;
+        }
+        input.val(quantity);
+        
+        var menuPrice = parseFloat(input.data('price'));
+        $(input).parent().next().find('.total_menuprice').html((quantity * menuPrice).toFixed(2));
+        
+        var total = 0.00;
+        $('.total_menuprice').each(function() {
+            total += parseFloat($(this).html());
+        });
+        $('#sub-total').html(total.toFixed(2));
+    });
+</script>
+
 
 </html>
