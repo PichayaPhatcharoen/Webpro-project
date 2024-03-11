@@ -134,120 +134,98 @@
     <div class="text-3xl mt-10 flex items-center justify-center">
       <?php $tableNum = $_GET['tableNum']; echo"<h1>โต๊ะ $tableNum </h1>";?>
     </div>
+     
+    <?php
+      $totalprice=0;    
+      $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
+      if ($tableNum < 1 || $tableNum > 6) {
+          $tableNum = 1;
+      }
+      $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
+      $cart_table = 'cart_' . $tableNum;
+      $stmt = $pdo->query("SELECT * FROM $cart_table ORDER BY id ASC");
 
-
-
-    <div class="bg-unselect mx-10 my-10  flex items-center text-center grid justify-between grid-cols-5 rounded-3xl justify-center px-5 py-5 pb-28">
-        <p>รายการ</p>
-        <p>ราคา</p>
-        <p>ไซส์</p>
-        <p>ประเภท</p>
-        <p>จำนวน</p>
-
-        <?php
-          $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
-          if ($tableNum < 1 || $tableNum > 6) {
-              $tableNum = 1;
-          }
-          $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-          $cart_table = 'cart_' . $tableNum;
-          $stmt = $pdo->query("SELECT * FROM $cart_table ORDER BY id ASC");
-          while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $menu_name = $row['bakery_name'];
-            $price = $row['price'];
-          }
-        ?>
-    </div>
-
-
-
-
-    <!-- <div class=" flex items-center justify-center px-5 py-5">
-
-
-      <div class="bg-unselect" style="border-radius: 30px; ">
-        <div class="items-center justify-center mt-5 flex flex-row gap-72">
-            <div>รายการ</div>
-            <div>ราคา</div>
-            <div>ประเภท</div>
-            <div >จำนวน</div>
-        </div>
-
-
-        <div class="items-center justify-center mt-5 flex flex-row gap-60">
-
-          <div class="menuname">Chocolate Cake</div>
-          <div class="ml-12"><span id="cake-total">3 </span> $</div>
-
+      echo '<div class="bg-unselect mx-3 md:mx-10 mt-10 gap-2 flex items-center text-center grid justify-between grid-cols-6 rounded-3xl justify-center px-5 py-5">
+        <p class=" text-lg md:text-xl my-4  text-pink-700">รายการ</p>
+        <p class=" text-lg md:text-xl my-4  text-pink-700">ประเภท</p>
+        <p class=" text-lg md:text-xl my-4  text-pink-700">ไซส์</p>
+        <p class=" text-lg md:text-xl my-4  text-pink-700">ราคาต่อชิ้น/แก้ว</p>
+        <p class=" text-lg md:text-xl my-4  text-pink-700">จำนวน</p>
+        <p class=" text-lg md:text-xl my-4  text-pink-700">รวม</p>
+        '; 
+      while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $menu_id = $row['id'];
+        $menu_name = $row['menu_name'];
+        $type = $row['menutype'];
+        $size = isset($row['size']) ? $row['size'] : "-";
+        $amount = $row['amount'];
+        $price = $row['price'];
+        
+        echo'
           <div>
-            <div class="ml-14 number-spinner">
-              <button id="cake-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-              <input id="cake-number" type="text" class="w-14 rounded-xl bg-unselect text-center" value="1">
-              <button id="cake-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
-            </div>
+            <p class= " text-base md:text-lg">' . $menu_name . '</p>
           </div>
 
-        </div>
-      </div>
+          <div>
+            <p class= " text-base md:text-lg">' . $type . '</p>
+          </div>
 
+          <div>
+            <p class= " text-base md:text-lg">' . $size . '</p>
+          </div>
+          
+          <div>
+            <p class= " text-base md:text-lg">' . $price . '</p>
+          </div>
 
-    </div> -->
+          <div>
+            <button data-id="'.$menu_id.'" class="btn btn-default btn-minus"><i class="fas fa-minus"></i></button>
+            <input id="cake-number_'.$menu_id.'" data-price="'.$price.'" type="text" class="amount-input w-14 rounded-xl text-center" value="'.$amount.'">
+            <button data-id="'.$menu_id.'" class="btn btn-default btn-plus"><i class="fas fa-plus"></i></button>
+          </div>
+
+          <div>
+            <p class= " text-base md:text-lg total_menuprice">' . $amount*$price . '</p>
+          </div>
+          ';      
+          $totalprice += ($amount*$price) ;
+        }
+        echo '</div>';
+        ?>
+       
 
 
     <div class="my-20 mr-14 flex gap-8 flex- row items-center justify-end" >
-      <div class="">ราคารวม : <span id="sub-total">x</span> ฿</div>
+      <div class="">ราคารวม : <span id="sub-total"><?php echo $totalprice?></span> ฿</div>
       <button class="btn w-32 bg-pink-200 rounded-2xl p-2">ยืนยัน</button>
     </div>
 
 
   </body>
-<script>
-  function upadateCaseNumber(product, price, isIncreasing){
-    const caseInput = document.getElementById(product + '-number');
-    let caseNumber = caseInput.value;
-            if(isIncreasing){
-                caseNumber = parseInt(caseNumber) + 1;
-            }
-            
-    else if(caseNumber > 0){
-           caseNumber = parseInt(caseNumber) - 1;
-         }
-        
-        caseInput.value = caseNumber;
-    // update case total 
-    const caseTotal = document.getElementById(product + '-total');
-    caseTotal.innerText = caseNumber * price;
-    calculateTotal();
-    }
 
-
-  function getInputvalue(product){
-      const productInput = document.getElementById(product + '-number');
-      const productNumber = parseInt(productInput.value);
-      return productNumber;
-  }
-  function calculateTotal(){
-      const caseTotal = getInputvalue('cake') * 3;
-      const subTotal = caseTotal;
-
-
-      // update on the html 
-      document.getElementById('sub-total').innerText = subTotal;
-
-
-  }
-
-  document.getElementById('cake-plus').addEventListener('click',function(){
-
-    upadateCaseNumber('cake', 3 ,true);
-  });
-
-  document.getElementById('cake-minus').addEventListener('click',function(){
-
-  upadateCaseNumber('cake', 3, false);
-  });
-
-
-</script>
+  <script>
+      $('body').on('click', '.btn-plus, .btn-minus', function() {
+          var inputId = '#cake-number_' + $(this).data('id');
+          var input = $(inputId);
+          var quantity = parseInt(input.val());
+          if($(this).hasClass('btn-minus')){
+              if(quantity > 0){
+                  quantity -= 1;
+              }
+          } else {
+              quantity += 1;
+          }
+          input.val(quantity);
+          
+          var menuPrice = parseFloat(input.data('price'));
+          $(input).parent().next().find('.total_menuprice').html((quantity * menuPrice).toFixed(2));
+          
+          var total = 0.00;
+          $('.total_menuprice').each(function() {
+              total += parseFloat($(this).html());
+          });
+          $('#sub-total').html(total.toFixed(2));
+      });
+  </script>
 
 </html>
