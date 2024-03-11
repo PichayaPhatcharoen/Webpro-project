@@ -180,7 +180,7 @@
 
           <div>
             <button data-id="'.$menu_id.'" class="btn btn-default btn-minus"><i class="fas fa-minus"></i></button>
-            <input id="cake-number_'.$menu_id.'" data-price="'.$price.'" type="text" class="amount-input w-14 rounded-xl text-center" value="'.$amount.'">
+            <input id="cake-number_'.$menu_id.'" data-price="'.$price.'" type="text" class="amount-input w-14 rounded-xl text-center" value="'.$amount.'" readonly>
             <button data-id="'.$menu_id.'" class="btn btn-default btn-plus"><i class="fas fa-plus"></i></button>
           </div>
 

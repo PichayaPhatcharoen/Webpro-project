@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2024 at 08:46 AM
+-- Generation Time: Mar 12, 2024 at 12:53 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -64,6 +64,109 @@ INSERT INTO `bakery` (`bakery_id`, `bakery_name`, `price`, `bakery_picture_path`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `cart_1`
+--
+
+CREATE TABLE `cart_1` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `menutype` enum('bakery','drink') DEFAULT NULL,
+  `size` enum('small','medium','large') DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart_1`
+--
+
+INSERT INTO `cart_1` (`id`, `item_id`, `menutype`, `size`, `amount`, `menu_name`, `price`) VALUES
+(63, 1, 'bakery', NULL, 1, 'ราสเบอร์รี่เค้ก', 110.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_2`
+--
+
+CREATE TABLE `cart_2` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `menutype` enum('bakery','drink') DEFAULT NULL,
+  `size` enum('small','medium','large') DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_3`
+--
+
+CREATE TABLE `cart_3` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `menutype` enum('bakery','drink') DEFAULT NULL,
+  `size` enum('small','medium','large') DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_4`
+--
+
+CREATE TABLE `cart_4` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `menutype` enum('bakery','drink') DEFAULT NULL,
+  `size` enum('small','medium','large') DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_5`
+--
+
+CREATE TABLE `cart_5` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `menutype` enum('bakery','drink') DEFAULT NULL,
+  `size` enum('small','medium','large') DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cart_6`
+--
+
+CREATE TABLE `cart_6` (
+  `id` int(11) NOT NULL,
+  `item_id` int(11) NOT NULL,
+  `menutype` enum('bakery','drink') DEFAULT NULL,
+  `size` enum('small','medium','large') DEFAULT NULL,
+  `amount` int(11) NOT NULL,
+  `menu_name` varchar(255) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `drinks`
 --
 
@@ -89,8 +192,7 @@ INSERT INTO `drinks` (`drink_id`, `drink_name`, `drink_picture_path`, `price_sma
 (6, 'นมปั่นโอริโอ้', './menu/drinks/นมปั่นโอริโอ้.png', 60.00, 80.00, 100.00),
 (7, 'มัชชะลาเต้', './menu/drinks/มัชชะลาเต้.png', 60.00, 80.00, 100.00),
 (8, 'นมปั่นคาราเมล', './menu/drinks/นมปั่นคาราเมล.png', 60.00, 80.00, 100.00),
-(9, 'ช็อกโกวิป', './menu/drinks/ช็อกโกวิป.png', 60.00, 80.00, 100.00),
-(10, 'มอคค่าวิปซินนามอน', './menu/drinks/มอคค่าวิปซินนามอน.png', 60.00, 80.00, 100.00);
+(9, 'ช็อกโกวิป', './menu/drinks/ช็อกโกวิป.png', 60.00, 80.00, 100.00);
 
 -- --------------------------------------------------------
 
@@ -117,6 +219,42 @@ ALTER TABLE `bakery`
   ADD UNIQUE KEY `bakery_name` (`bakery_name`);
 
 --
+-- Indexes for table `cart_1`
+--
+ALTER TABLE `cart_1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_2`
+--
+ALTER TABLE `cart_2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_3`
+--
+ALTER TABLE `cart_3`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_4`
+--
+ALTER TABLE `cart_4`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_5`
+--
+ALTER TABLE `cart_5`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `cart_6`
+--
+ALTER TABLE `cart_6`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `drinks`
 --
 ALTER TABLE `drinks`
@@ -137,19 +275,55 @@ ALTER TABLE `reviews`
 -- AUTO_INCREMENT for table `bakery`
 --
 ALTER TABLE `bakery`
-  MODIFY `bakery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `bakery_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+
+--
+-- AUTO_INCREMENT for table `cart_1`
+--
+ALTER TABLE `cart_1`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+
+--
+-- AUTO_INCREMENT for table `cart_2`
+--
+ALTER TABLE `cart_2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cart_3`
+--
+ALTER TABLE `cart_3`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cart_4`
+--
+ALTER TABLE `cart_4`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cart_5`
+--
+ALTER TABLE `cart_5`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `cart_6`
+--
+ALTER TABLE `cart_6`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `drinks`
 --
 ALTER TABLE `drinks`
-  MODIFY `drink_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `drink_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

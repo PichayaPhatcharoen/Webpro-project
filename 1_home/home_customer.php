@@ -396,7 +396,7 @@
                                 <p class="text-xl">S: ' . $price_small . ' ฿</p>
                                 <p class="text-xl">M: ' . $price_med . ' ฿</p>
                                 <p class="text-xl">L: ' . $price_large . ' ฿</p>
-                                <div>
+                                <div class="pb-10 md:pb-0">
                                     <select id="sizeSelect_' . $drink_id . '" class="rounded-lg mt-4">
                                         <option value="0">เลือกขนาด</option>
                                         <option value="small">Small</option>
