@@ -10,6 +10,9 @@
       href="https://fonts.googleapis.com/css2?family=Itim&family=Kanit&display=swap"
       rel="stylesheet"
     />
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="output.css" />
     <link
@@ -84,13 +87,10 @@
 
       .head {
         background-color: #ffc6bb;
-        width: 100%;
         height: 76px;
         margin: 0px;
-        padding: 24px 0px 0px 10px;
       }
       body {
-        margin: 0%;
         background-color: #FFFAF7;
         font-family: "Kanit", sans-serif;
         font-weight: 400;
@@ -110,62 +110,66 @@
         background-color: #e79b75;
       }
       .cart{
-	margin: 20px 0;
-	background-color: #F6F5FA;;
-	padding: 60px 0;
-}
+        margin: 20px 0;
+        background-color: #F6F5FA;;
+        padding: 60px 0;
+      }
     </style>
   </head>
   <body>
     
-    <div class="head">
+    <div class="head pt-6">
       <div class="">
         <button id="arrow">
           <a href="../1_home/home_customer.php" style="text-decoration: none; color: #000">
-            <i class="fa-solid fa-arrow-left"></i
-          ></a>
+            <i class="fa-solid fa-arrow-left"></i>
+          </a>
         </button>
       </div>
       <div>
         <h1 class="flex text-center pl-5">สั่งอาหาร</h1>
       </div>
     </div>
+
     <div class="text-3xl mt-10 flex items-center justify-center">
-        <h1>โต๊ะ XX</h1>
-      </div>
+      <?php $tableNum = $_GET['tableNum']; echo"<h1>โต๊ะ $tableNum </h1>";?>
+    </div>
+
     <div class="mt-10 flex items-center justify-center">
       <div class="h-[400px] w-[1000px] bg-unselect" style="border-radius: 30px;">
-            <div class="items-center justify-center mt-5 flex flex-row gap-72">
-                <div>รายการ</div>
-                <div>ราคา</div>
-                <div >จำนวน</div>
+        <div class="items-center justify-center mt-5 flex flex-row gap-72">
+            <div>รายการ</div>
+            <div>ราคา</div>
+            <div >จำนวน</div>
+        </div>
+
+        <div class="items-center justify-center mt-5 flex flex-row gap-60">
+
+          <div>Chocolate Cake</div>
+          <div class="ml-12"><span id="cake-total">3 </span> $</div>
+
+          <div>
+            <div class="ml-14 number-spinner">
+              <button id="cake-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
+              <input id="cake-number" type="text" class="w-14 rounded-xl bg-unselect text-center" value="1">
+              <button id="cake-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
             </div>
-            <div class="items-center justify-center mt-5 flex flex-row gap-60">
-                <div>Chocolate Cake</div>
-                <div class="ml-12"><span id="cake-total">3 </span> $</div>
-                <div>
-                <div class="ml-14 number-spinner">
-                    <button id="cake-minus" class="btn btn-default"><i class="fas fa-minus"></i></button>
-                    <input id="cake-number" type="text" class="w-14 rounded-xl bg-unselect text-center" value="1">
-                    <button id="cake-plus" class="btn btn-default"><i class="fas fa-plus"></i></button>
-                 </div>
-                </div>
-                    </div>
+          </div>
 
-                    </div>
-                 </div>
-            </div>        
-    </div>
-    <div class="flex items-end justify-end">
-    <div class="mt-16 mr-40 flex flex-row">
-        <div class="flex flex-row">
-        <div class="mt-3">ราคารวม : <span id="sub-total">3</span> $</div>
-        <button class="btn bg-green-400 rounded-xl p-2 ml-3" style="width: 120px; border-radius: 16px; background-color: #6BDBC4;">ยืนยัน</button>
+        </div>
+      </div>
     </div>
 
-  </div>
 
-</div>
+    <div class="flex items-end justify-end" >
+      <div class="my-10 mr-40 flex flex-row">
+          <div class="flex flex-row">
+          <div class="mt-3">ราคารวม : <span id="sub-total">3</span> $</div>
+          <button class="btn bg-green-400 rounded-xl p-2 ml-3 my-10" style="width: 120px; border-radius: 16px; background-color: #6BDBC4;">ยืนยัน</button>
+      </div>
+    </div>
+
+
   </body>
 <script src="app.js"></script>
 

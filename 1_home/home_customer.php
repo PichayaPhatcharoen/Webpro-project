@@ -400,13 +400,12 @@
 
     </div>
     <script>
-        function selectaddon(drinkName, tableNum) {
-            // Construct the URL with query parameters
-            const url = `selectaddon.php?drinkName=${drinkName}&tableNum=${tableNum}`;
+        function selectaddon(drink_name, tableNum) {
+           
+        }
+        function addbakerytocart(bakery_name, tableNum){
             
-            // Redirect to the selectaddon page with the query parameters
-            window.location.href = url;
-            }
+        }
     </script>
 
     <!-- end -->
