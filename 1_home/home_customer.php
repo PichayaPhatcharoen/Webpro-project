@@ -310,7 +310,7 @@
                 $tableNum = 1;
             }
             $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-            $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id DESC');
+            $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id ASC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
             $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
             $counter = 0;
@@ -372,7 +372,7 @@
                     $tableNum = 1;
                 }
                 $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-                $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id DESC');
+                $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id ASC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
                 $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
                 $counter = 0;
