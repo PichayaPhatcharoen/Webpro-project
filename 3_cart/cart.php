@@ -121,7 +121,7 @@
     <div class="head pt-6">
       <div class="">
         <button id="arrow">
-          <a href="../1_home/home_customer.php" style="text-decoration: none; color: #000">
+          <a href="../1_home/home_customer.php?tableNum=<?php echo $_GET['tableNum']?>" style="text-decoration: none; color: #000">
             <i class="fa-solid fa-arrow-left"></i>
           </a>
         </button>
@@ -135,17 +135,46 @@
       <?php $tableNum = $_GET['tableNum']; echo"<h1>โต๊ะ $tableNum </h1>";?>
     </div>
 
-    <div class="mt-10 flex items-center justify-center">
-      <div class="h-[400px] w-[1000px] bg-unselect" style="border-radius: 30px;">
+
+
+    <div class="bg-unselect mx-10 my-10  flex items-center text-center grid justify-between grid-cols-5 rounded-3xl justify-center px-5 py-5 pb-28">
+        <p>รายการ</p>
+        <p>ราคา</p>
+        <p>ไซส์</p>
+        <p>ประเภท</p>
+        <p>จำนวน</p>
+
+        <?php
+          $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
+          if ($tableNum < 1 || $tableNum > 6) {
+              $tableNum = 1;
+          }
+          $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
+          $cart_table = 'cart_' . $tableNum;
+
+          $stmt = $pdo->query("SELECT * FROM $cart_table ORDER BY id ASC");
+        
+        ?>
+    </div>
+
+
+
+
+    <!-- <div class=" flex items-center justify-center px-5 py-5">
+
+
+      <div class="bg-unselect" style="border-radius: 30px; ">
         <div class="items-center justify-center mt-5 flex flex-row gap-72">
             <div>รายการ</div>
             <div>ราคา</div>
+            <div>ประเภท</div>
             <div >จำนวน</div>
         </div>
 
+
         <div class="items-center justify-center mt-5 flex flex-row gap-60">
 
-          <div>Chocolate Cake</div>
+          <div class="menuname">Chocolate Cake</div>
           <div class="ml-12"><span id="cake-total">3 </span> $</div>
 
           <div>
@@ -158,19 +187,65 @@
 
         </div>
       </div>
-    </div>
 
 
-    <div class="flex items-end justify-end" >
-      <div class="my-10 mr-40 flex flex-row">
-          <div class="flex flex-row">
-          <div class="mt-3">ราคารวม : <span id="sub-total">3</span> $</div>
-          <button class="btn bg-green-400 rounded-xl p-2 ml-3 my-10" style="width: 120px; border-radius: 16px; background-color: #6BDBC4;">ยืนยัน</button>
-      </div>
+    </div> -->
+
+
+    <div class="my-20 mr-14 flex gap-8 flex- row items-center justify-end" >
+      <div class="">ราคารวม : <span id="sub-total">x</span> ฿</div>
+      <button class="btn w-32 bg-pink-200 rounded-2xl p-2">ยืนยัน</button>
     </div>
 
 
   </body>
-<script src="app.js"></script>
+<script>
+  function upadateCaseNumber(product, price, isIncreasing){
+    const caseInput = document.getElementById(product + '-number');
+    let caseNumber = caseInput.value;
+            if(isIncreasing){
+                caseNumber = parseInt(caseNumber) + 1;
+            }
+            
+    else if(caseNumber > 0){
+           caseNumber = parseInt(caseNumber) - 1;
+         }
+        
+        caseInput.value = caseNumber;
+    // update case total 
+    const caseTotal = document.getElementById(product + '-total');
+    caseTotal.innerText = caseNumber * price;
+    calculateTotal();
+    }
+
+
+  function getInputvalue(product){
+      const productInput = document.getElementById(product + '-number');
+      const productNumber = parseInt(productInput.value);
+      return productNumber;
+  }
+  function calculateTotal(){
+      const caseTotal = getInputvalue('cake') * 3;
+      const subTotal = caseTotal;
+
+
+      // update on the html 
+      document.getElementById('sub-total').innerText = subTotal;
+
+
+  }
+
+  document.getElementById('cake-plus').addEventListener('click',function(){
+
+    upadateCaseNumber('cake', 3 ,true);
+  });
+
+  document.getElementById('cake-minus').addEventListener('click',function(){
+
+  upadateCaseNumber('cake', 3, false);
+  });
+
+
+</script>
 
 </html>
