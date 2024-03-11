@@ -332,7 +332,7 @@
                         </div>
                     </div>
                     <div class="' . $colorsbin[$counter % count($colorsbin)] . ' rounded-full absolute bottom-0 right-0 p-3 mx-5 my-4 "> 
-                        <button onclick="adddrinktocart('.$bakery_id.','.$tableNum.')">
+                        <button onclick="addbakerytocart('.$bakery_id.','.$tableNum.')">
                             <img id="cart" class="w-9 cart" src="./elements/cart.png" alt="cart">
                         </button>
                     </div>
@@ -418,23 +418,46 @@
         </div>
 
     </div>
-    <script>
 
-        function addbakerytocart(menuname, tableNum){
 
+<script>
+   function addbakerytocart(menuname, tableNum){
+    fetch('addtocart.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: "item_id=" + menuname + "&menu_name=" + menuname + "&tableNum=" + tableNum
+    }).then(response => {
+        if (response.ok) {
+            alert('Item added to cart');
+        } else {
+            alert('Failed to add item to cart');
         }
-        function adddrinktocart(drink_id, tableNum){
-            var sizeSelectId = 'sizeSelect_' + drink_id;
-            size = document.getElementById(sizeSelectId).value;
-            if (size =="0") {
-                alert('กรุณาเลือกขนาดเครื่องดื่ม');
-                return;
-            } else {
-                //add to cart process
-            }
-        }
+    }).catch(error => {
+        console.error('Error adding item to cart:', error);
+    });
+}
 
-    </script>
+
+function adddrinktocart(drink_id, drink_name, tableNum){
+    var size = document.getElementById('sizeSelect_' + drink_id).value;
+    if(size == "0") {
+        alert('กรุณาเลือกขนาดเครื่องดื่ม');
+        return;
+    } else {
+        fetch('addtocart.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: 'item_id=' + drink_id + '&menu_name=' + drink_name + '&size=' + size + '&tableNum=' + tableNum
+        })
+        .then(response => response.ok ? console.log('Drink added to cart successfully') : console.error('Failed to add drink to cart'))
+        .catch(error => console.error('Error adding drink to cart:', error));
+    }
+}
+</script>
 
     <!-- end -->
 
