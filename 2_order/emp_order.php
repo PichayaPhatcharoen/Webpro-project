@@ -76,24 +76,20 @@
         <?php endforeach; ?>
     </div>
     
-   
+    <?php 
+        $stmt2 = $pdo->prepare("SELECT COUNT(*) as totalUnprepared FROM order_customer WHERE tableNum = :tableNum AND ispaid = 'ยังไม่ได้ชำระ' AND state != 'เตรียมอาหารเสร็จสิ้น'");
+        $stmt2->bindParam(':tableNum', $tableNum);
+        $stmt2->execute();
+        $total_unprepared = $stmt2->fetch(PDO::FETCH_ASSOC)["totalUnprepared"];
+    ?>
+
     <div class="my-20 mx-4 flex flex-row items-center justify-end">
     <div>
         <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
     </div>
         <button onclick="checkTheInput(<?php echo $total_unprepared; ?>)" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
     </div>
-
-    <!-- prepare check -->
-    <?php 
-        $stmt2 = $pdo->prepare("SELECT COUNT(*) as totalUnprepared FROM order_customer WHERE tableNum = :tableNum AND ispaid = 'ยังไม่ได้ชำระ' AND state = 'กำลังจัดเตรียมอาหาร..'");
-        $stmt2->bindParam(':tableNum', $tableNum);
-        $stmt2->execute();
-        $total_unprepared = $stmt2->fetch(PDO::FETCH_ASSOC)["totalUnprepared"];
-    ?>
-
-
-
+    
     <!-- error to submit -->
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="input_error">
         <div class="bg-white rounded-lg p-20 shadow-lg flex flex-col text-center">
@@ -106,7 +102,7 @@
     <!-- able to submit -->
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
         <div class="bg-white rounded-lg p-20 flex flex-col shadow-lg">
-            <div id="popup-message" class="text-center mb-4"></div>
+            <div id="popup-message" class="text-center mb-4">ยืนยันที่จะเปลี่ยนแปลงรายการคำสั่งซื้ออาหารเป็น 'ชำระแล้ว' หรือไม่?</div>
             <div class = "flex flex-row justify-center items-center gap-4">
                 <button id="confirm-btn" onclick="confirmSubmission()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">Yes</button>
                 <button id="cancel-btn" onclick="togglePopup()" class="bg-red-400 hover:bg-red-500 text-white py-2 px-8 rounded-full">No</button>
@@ -141,29 +137,28 @@
             if (total_unprepared > 0) {
             toggleinputerror();
             } else {
+            // If everything is prepared, show the confirmation popup
             togglePopup();
             }
         }
 
 
-         function confirmSubmission() {
-            togglePopup();
-            let tableNum = <?php echo $tableNum; ?>;  
+        function confirmSubmission() {
+            let tableNum = <?php echo $tableNum; ?>;
             var xhr = new XMLHttpRequest();
             xhr.open("POST", 'updateispaid.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onreadystatechange = function() {
-                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                    if(JSON.parse(xhr.responseText) === "Success"){
+            if(xhr.readyState == 4 && xhr.status == 200) {
+                var response = JSON.parse(xhr.responseText);
+                if(response.result == 'Success') {
+                    togglePopup();
                     togglesuccess();
-                    } else {
                     }
                 }
-            }
-            xhr.send('tableNum='+tableNum);
+            }   
+            xhr.send('tableNum=' + tableNum);
         }
-
-
 
     </script>
 

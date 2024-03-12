@@ -7,9 +7,9 @@ if (isset($_POST['tableNum'])) {
     $stmt->bindParam(':tableNum', $tableNum);
     $stmt->execute();
     if($stmt->rowCount()) {
-        echo json_encode("Success"); // Successfully updated the status
+        echo json_encode(["result" => "Success"]); // Successfully updated the status
     } else {
-        echo json_encode("Fail"); // Failed updating the status
+        echo json_encode(["result" => "Fail"]); // Failed updating the status
     }
 }
-?> 
+?>
