@@ -30,75 +30,77 @@
                     </a>
                 </div>
             </div>
-            <!-- <div class="flex justify-between ">
-                <div class="header2-left flex items-center gap-0 md:gap-10 ">
-                    <a href="#profile" class="logo rounded-full object-cover flex items-center justify-center overflow-hidden" alt="logo"></a>
-                    <a href="#webname" class="webname">Fern n Friends café</a>
-                </div>
-                <div class="header2-right flex items-center gap-0 md:gap-10">
-                    <a href="#order" class="menuho">รายการคำสั่งซื้ออาหาร</a>
-                    <a href="#edit" class="menuho2">จัดการรายการอาหาร</a>
-                </div>
-            </div> -->
         </div>    
     </header>
-    <div class="tableselect bg-status-done  flex flex-row justify-around py-6">
-        <div ><a id="table1" href="">โต๊ะที่1</a></div>
-        <div ><a id="table2" href="">โต๊ะที่2</a></div>
-        <div ><a id="table3" href="">โต๊ะที่3</a></div>
-        <div ><a id="table4" href="">โต๊ะที่4</a></div>
-        <div ><a id="table5" href="">โต๊ะที่5</a></div>
-        <div ><a id="table6" href="">โต๊ะที่6</a></div>
+    <?php $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
+    if ($tableNum < 1 || $tableNum > 6) {
+        $tableNum = 1;
+    }?>
+    <div class="tableselect bg-status-done flex flex-row justify-around py-6">
+        <div><a id="table1" href="?tableNum=1" <?php if($tableNum == 1) echo 'class="underline"'; ?>>โต๊ะที่1</a></div>
+        <div><a id="table2" href="?tableNum=2" <?php if($tableNum == 2) echo 'class="underline"'; ?>>โต๊ะที่2</a></div>
+        <div><a id="table3" href="?tableNum=3" <?php if($tableNum == 3) echo 'class="underline"'; ?>>โต๊ะที่3</a></div>
+        <div><a id="table4" href="?tableNum=4" <?php if($tableNum == 4) echo 'class="underline"'; ?>>โต๊ะที่4</a></div>
+        <div><a id="table5" href="?tableNum=5" <?php if($tableNum == 5) echo 'class="underline"'; ?>>โต๊ะที่5</a></div>
+        <div><a id="table6" href="?tableNum=6" <?php if($tableNum == 6) echo 'class="underline"'; ?>>โต๊ะที่6</a></div>
     </div>
-    <div class="mx-auto max-w-screen-lg ml:auto mb-10">
-        <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
-        <div class="item_1 container flex justify-around lg:justify-between mb-10">
-            <div>
-                <div class="flex flex-col">
-                    <div id="Item"><p class="font-bold text-xl">บานอฟฟี่</p></div>
-                    <div id="price" class="text-md flex flex-row gap-12">
-                        <p id="price" class="text-red-400">100 ฿</p>
-                        <p id="amount" class="text-gray-500">x4</p>
+
+    <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
+
+    <?php  
+    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
+    $stmt = $pdo->prepare("SELECT * FROM order_customer WHERE tableNum = :tableNum && ispaid = 'ยังไม่ได้ชำระ' ORDER BY order_datetime ASC");
+    $stmt->bindParam(':tableNum', $tableNum);
+    $stmt->execute();
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $total_price = 0;
+    ?>
+
+    <div class="grid grid-rows-2 justify-around gap-3">
+        <?php foreach ($orders as $order): 
+            $total_price += $order['price'] * $order['amount'];
+            ?>
+            <div class="item_1  grid grid-cols-2  mb-10">
+                <div class="">
+                    <div class="flex flex-col mx-16">
+                        <div id="Item"><p class="font-bold text-xl"><?php echo $order['menu_name']; ?></p></div>
+                        <div id="price" class="text-md grid grid-cols-2 justify-between">
+                            <p id="price" class="text-red-400 text-left"><?php echo $order['price']; ?> ฿</p>
+                            <p id="amount" class="text-gray-500 text-right">x<?php echo $order['amount']; ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="pl-4 pr-4 flex items-center justify-center bg-status-prep rounded-full w-32 sm:w-48">
-                <div id="status">กำลังจัดเตรียมอาหาร...</div>
-            </div>
-        </div>
-        <div class="item_2 container flex justify-around lg:justify-between mb-10">
-            <div>
-                <div class="flex flex-col">
-                    <div id="Item"><p class="font-bold text-xl">เค้ก strawberry</p></div>
-                    <div id="price amo" class="text-md flex flex-row gap-12">
-                        <p id="price" class="text-red-400">100 ฿</p>
-                        <p id="amount" class="text-gray-500">x4</p>
-                    </div>
+                <div id="status" class="mx-16 pr-4 flex items-center justify-center <?php echo $order['state'] == 'เตรียมอาหารเสร็จสิ้น' ? 'bg-status-done' : 'bg-status-prep' ?> rounded-full w-32 sm:w-48">
+                    <div class="pl-4"><?php echo $order['state']; ?></div>
                 </div>
             </div>
-            <div class="pl-4 pr-4 flex items-center justify-center bg-status-done rounded-full w-32 sm:w-48">
-                <div id="status">เตรียมอาหารเสร็จสิ้น</div>
-            </div>
-        </div>
-        <footer class=" fixed bottom-0 left-0 right-0 p-4 flex justify-end items-center">
-            <p class="mr-4">ยอดรวม: 800 ฿</p>
-            <button onclick="showPopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
-        </footer>
+        <?php endforeach; ?>
+    </div>
+
+
+    <div class="my-20 mx-4 flex flex-row items-center justify-end">
+    <div>
+        <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
+    </div>
+    <button onclick="ShowConfirm()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+    </div>
+
     
-        <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
-            <div class="bg-white rounded-lg p-20 shadow-lg">
-                <!-- <p class="text-center mb-4">กรุณารอสักครู่ . . . </p> -->
-                <button onclick="hidePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button>
-            </div>
-            <script>
-                function showPopup() {
-                    document.getElementById("popup-overlay").classList.remove("hidden");
-                }
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
+        <div class="bg-white rounded-lg p-20 shadow-lg">
+            <button onclick="hidePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button>
+        </div>
+    </div>
+    <script>
+        function showPopup() {
+            document.getElementById("popup-overlay").classList.remove("hidden");
+        }
+
+        function hidePopup() {
+            document.getElementById("popup-overlay").classList.add("hidden");
+        }
         
-                function hidePopup() {
-                    document.getElementById("popup-overlay").classList.add("hidden");
-                }
-            </script>
+    </script>
 </body>
 
 </html>

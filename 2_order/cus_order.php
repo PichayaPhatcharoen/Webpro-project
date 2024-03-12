@@ -31,7 +31,7 @@
                 <a href="../3_cart/cart.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <span class="material-symbols-outlined shopping">
                         shopping_cart
-                        </span>
+                    </span>
                 </a>
             </div>
         </div>
@@ -75,25 +75,47 @@
 
 
     <div class="my-20 mx-4 flex flex-row items-center justify-end">
-        <div>
-            <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
-        </div>
-        <button onclick="TogglePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+    <div>
+        <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
+    </div>
+    <button onclick="ShowConfirm()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
     </div>
 
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
+        <div class="bg-white rounded-lg p-20 flex flex-col shadow-lg">
+            <div id="popup-message" class="text-center mb-4">คุณต้องการยืนยันการชำระเงินหรือไม่ ยอดรวม: <?php echo $total_price; ?> ฿</p>
+            <div class="flex flex-row justify-center items-center mt-4 gap-4">
+                <button onclick="OK()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">Yes</button>
+                <button onclick="hideConfirm()" class="bg-red-400 hover:bg-red-500 text-white py-2 px-8 rounded-full">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="success">
         <div class="bg-white rounded-lg p-20 shadow-lg">
             <p class="text-center mb-4">กรุณารอสักครู่ . . . </p>
-            <button onclick="TogglePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button>
+            <!-- <button onclick="hideSuccess()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button> -->
         </div>
     </div>
 
     <script>
-        function TogglePopup() {
-            document.getElementById("popup-overlay").classList.toggle("hidden");
+        function ShowConfirm() {
+            document.getElementById("popup-overlay").classList.remove("hidden");
         }
-
+        function hideConfirm() {
+            document.getElementById("popup-overlay").classList.add("hidden");
+        }
+        function showSuccess() {
+            document.getElementById("success").classList.remove("hidden");
+        }
+        function hideSuccess() {
+            document.getElementById("success").classList.add("hidden");
+        }
+        
+        function OK() {
+            showSuccess();
+        }
     </script>
-</body>
+    </body>
 
-</html>
+    </html>

@@ -30,7 +30,7 @@
                 <a href="../3_cart/cart.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <span class="material-symbols-outlined shopping">
                         shopping_cart
-                        </span>
+                    </span>
                 </a>
             </div>
         </div>
@@ -57,7 +57,7 @@
 
     <div id="reviews" class="container flex flex-col w-96 md:w-auto mx-auto">
         <?php
-        $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
+        $pdo = new PDO('mysql:host=localhost;dbname=fernnfriend', 'root', '');
         $stmt = $pdo->query('SELECT * FROM reviews ORDER BY id DESC');
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
             echo '<div class="mx-24 my-10">';
