@@ -75,11 +75,10 @@
     </div>
 
 
-    <div class="my-20 mx-4 flex flex-row items-center justify-end">
-    <div>
-        <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
-    </div>
-    <button onclick="ShowConfirm()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+    <div class="my-20 flex flex-row items-center justify-center py-10 bg-blue-300 w-full" >
+        <div>
+            <p class="mr-4 text-white">ยอดรวม: <?php echo $total_price; ?>฿</p>
+        </div>
     </div>
 
     <script>

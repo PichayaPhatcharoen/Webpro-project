@@ -75,15 +75,25 @@
             </div>
         <?php endforeach; ?>
     </div>
-
-
+    
+   
     <div class="my-20 mx-4 flex flex-row items-center justify-end">
     <div>
         <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
     </div>
-    <button onclick="Checkinput()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+        <button onclick="checkTheInput(<?php echo $total_unprepared; ?>)" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
     </div>
-    
+
+    <!-- prepare check -->
+    <?php 
+        $stmt2 = $pdo->prepare("SELECT COUNT(*) as totalUnprepared FROM order_customer WHERE tableNum = :tableNum AND ispaid = 'ยังไม่ได้ชำระ' AND state = 'กำลังจัดเตรียมอาหาร..'");
+        $stmt2->bindParam(':tableNum', $tableNum);
+        $stmt2->execute();
+        $total_unprepared = $stmt2->fetch(PDO::FETCH_ASSOC)["totalUnprepared"];
+    ?>
+
+
+
     <!-- error to submit -->
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="input_error">
         <div class="bg-white rounded-lg p-20 shadow-lg flex flex-col text-center">
@@ -110,8 +120,53 @@
             <a href="emp_order.php"><button onclick="togglesuccess()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button></a>
         </div>
     </div>
-
     
+    <script>
+        function togglePopup() {
+            var popup = document.getElementById('popup-overlay');
+            popup.classList.toggle('hidden');
+        }
+        function toggleinputerror() {
+            var popuperr = document.getElementById('input_error');
+            popuperr.classList.toggle('hidden');
+        }
+        function togglesuccess() {
+            var popupsucess = document.getElementById('sucess-overlay');
+            popupsucess.classList.toggle('hidden');
+        }
+        
+        //====================================================
+        
+        function checkTheInput(total_unprepared) {
+            if (total_unprepared > 0) {
+            toggleinputerror();
+            } else {
+            togglePopup();
+            }
+        }
+
+
+         function confirmSubmission() {
+            togglePopup();
+            let tableNum = <?php echo $tableNum; ?>;  
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", 'updateispaid.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function() {
+                if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                    if(JSON.parse(xhr.responseText) === "Success"){
+                    togglesuccess();
+                    } else {
+                    }
+                }
+            }
+            xhr.send('tableNum='+tableNum);
+        }
+
+
+
+    </script>
+
     
     
 </body>
