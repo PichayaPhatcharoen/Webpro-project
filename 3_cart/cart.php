@@ -1,3 +1,5 @@
+<?php include "../conn.php";?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -141,7 +143,6 @@
       if ($tableNum < 1 || $tableNum > 6) {
           $tableNum = 1;
       }
-      $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
       $cart_table = 'cart_' . $tableNum;
       $stmt = $pdo->query("SELECT * FROM $cart_table ORDER BY id ASC");
 

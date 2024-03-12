@@ -1,4 +1,5 @@
 <?php
+include "../conn.php";
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -7,7 +8,6 @@ if(isset($_POST['item_id'], $_POST['tableNum'], $_POST['menutype'])) {
     $item_id = $_POST['item_id'];
     $tableNum = $_POST['tableNum'];
     $menutype = $_POST['menutype'];
-    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
     $cart_table = 'cart_' . $tableNum;
     $price = "";
     

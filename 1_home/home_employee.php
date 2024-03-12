@@ -1,3 +1,4 @@
+<?php include "../conn.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -191,11 +192,11 @@
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
+                <a href="">
+                    <p class="menuho">หน้าหลัก</p>
+                </a>
                 <a href="../2_order/emp_order.php">
                     <p class="menuho2">รายการคำสั่งซื้ออาหาร</p>
-                </a>
-                <a href="">
-                    <p class="menuho">จัดการรายการอาหาร</p>
                 </a>
             </div>
         </div>
@@ -306,7 +307,6 @@
     <div class="mx-2 md:mx-24 flex items-center justify-center">  
         <div class="thebakery container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3   gap-5 xl:gap-11">
         <?php
-            $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
             $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id ASC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
             $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
@@ -362,7 +362,6 @@
     <div class="mx-2 md:mx-24 flex items-center justify-center">  
         <div class="thedrinks container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3    xl:gap-11 gap-5">
             <?php
-                $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
                 $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id ASC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
                 $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');

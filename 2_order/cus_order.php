@@ -1,3 +1,5 @@
+<?php include "../conn.php";?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +46,6 @@
     if ($tableNum < 1 || $tableNum > 6) {
         $tableNum = 1;
     }
-    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
     $stmt = $pdo->prepare("SELECT * FROM order_customer WHERE tableNum = :tableNum && ispaid = 'ยังไม่ได้ชำระ' ORDER BY order_datetime ASC");
     $stmt->bindParam(':tableNum', $tableNum);
     $stmt->execute();

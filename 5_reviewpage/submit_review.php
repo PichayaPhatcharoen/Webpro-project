@@ -1,4 +1,5 @@
 <?php
+    include "../conn.php";
     $tableNum = $_GET['tableNum'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
@@ -15,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
     $stmt = $pdo->prepare('INSERT INTO reviews (name, review_text, photo_url) VALUES (?, ?, ?)');
     $stmt->execute([$name, $reviewText, $photoUrl]);
 

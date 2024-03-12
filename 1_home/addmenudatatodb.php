@@ -1,11 +1,10 @@
 <?php
+include "../conn.php";
 // Top of your PHP file
 error_reporting(E_ALL & ~E_NOTICE);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Try connecting to the database
-    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
-
     $menuName = $_POST['menuName'];
     
     if($_POST['type'] === "bakery"){

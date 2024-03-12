@@ -1,5 +1,6 @@
 <?php
-$pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
+include "../conn.php";
+
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tableNum = isset($_POST['tableNum']) ? intval($_POST['tableNum']) : 1;

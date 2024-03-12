@@ -1,3 +1,4 @@
+<?php include "../conn.php";?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -309,7 +310,6 @@
             if ($tableNum < 1 || $tableNum > 6) {
                 $tableNum = 1;
             }
-            $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
             $stmt = $pdo->query('SELECT * FROM bakery ORDER BY bakery_id ASC');
             $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
             $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');
@@ -371,7 +371,6 @@
                 if ($tableNum < 1 || $tableNum > 6) {
                     $tableNum = 1;
                 }
-                $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
                 $stmt = $pdo->query('SELECT * FROM drinks ORDER BY drink_id ASC');
                 $colors = array('pink', 'purple', 'yellow', 'green', 'rose');
                 $colorsbin = array('pink2', 'purple2', 'yellow2', 'green2', 'rose2');

@@ -1,3 +1,5 @@
+<?php include "../conn.php";?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,31 +14,29 @@
     <title>CUSTOMER_ORDER</title>
 </head>
 <body class="bg-cus-order">
-    <header>
-        <div class="header2 bg-cus-order">
-            <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
-                <div class="flex space-x-6 items-center">
-                    <a href="../1_home/home_manager.php">
-                        <img src="../1_home/elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
-                    </a>
-                    <p>Fern n Friends Cafe</p>
-                </div>
-                <div class="flex space-x-12">
-                    <a href="../2_order/emp_order.php">
-                        <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
-                    </a>
-                    <a href="../1_home/home_manager.php">
-                        <p class="menuho2">จัดการรายการอาหาร</p>
-                    </a>
-                </div>
+    <nav>
+        <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
+            <div class="flex space-x-6 items-center">
+                <a href="">
+                    <img src="../1_home/elements/logo_1.png" alt="logo" class="rounded-full h-16 min-h-16 w-16 min-w-16 animate-pulse">
+                </a>
+                <p>Fern n Friends Cafe</p>
             </div>
-        </div>    
-    </header>
+            <div class="flex space-x-12">
+                <a href="../1_home/home_employee.php">
+                    <p class="menuho2">หน้าหลัก</p>
+                </a>
+                <a href="">
+                    <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
+                </a>
+            </div>
+        </div>
+        </nav>
     <?php $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
     if ($tableNum < 1 || $tableNum > 6) {
         $tableNum = 1;
     }?>
-    <div class="tableselect bg-status-done flex flex-row justify-around py-6">
+    <div class="tableselect bg-status-done flex flex-row justify-around mt-4 py-6">
         <div><a id="table1" href="?tableNum=1" <?php if($tableNum == 1) echo 'class="underline"'; ?>>โต๊ะที่1</a></div>
         <div><a id="table2" href="?tableNum=2" <?php if($tableNum == 2) echo 'class="underline"'; ?>>โต๊ะที่2</a></div>
         <div><a id="table3" href="?tableNum=3" <?php if($tableNum == 3) echo 'class="underline"'; ?>>โต๊ะที่3</a></div>
@@ -48,7 +48,6 @@
     <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
 
     <?php  
-    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
     $stmt = $pdo->prepare("SELECT * FROM order_customer WHERE tableNum = :tableNum && ispaid = 'ยังไม่ได้ชำระ' ORDER BY order_datetime ASC");
     $stmt->bindParam(':tableNum', $tableNum);
     $stmt->execute();

@@ -1,11 +1,12 @@
 <?php
+include "../conn.php";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get the tableNum and orders data from the POST request
     $tableNum = $_POST['tableNum'];
     $orders = json_decode($_POST['orders'], true);
 
     // Connect to the database
-    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
 
     // Insert the order into the order_customer table
     $stmt = $pdo->prepare("INSERT INTO order_customer (tableNum, menu_type, menu_name, size, amount, price, state, order_datetime, ispaid) VALUES (?, ?, ?, ?, ?, ?, 'กำลังจัดเตรียมอาหาร..', NOW(),'ยังไม่ได้ชำระ')");
