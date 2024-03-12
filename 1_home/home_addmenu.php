@@ -202,7 +202,7 @@
     
     <!-- submit sucess -->
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="sucess-overlay">
-        <div class="bg-white rounded-lg p-20 shadow-lg">
+        <div class="bg-white flex flex-col justify-center items-center  rounded-lg p-20 shadow-lg">
             <p class="text-center mb-4">เพิ่มรายการสำเร็จ</p>
             <a href="home_manager.php"><button onclick="togglesuccess()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button></a>
         </div>

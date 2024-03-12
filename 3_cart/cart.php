@@ -197,13 +197,123 @@
 
     <div class="my-20 mr-14 flex gap-8 flex- row items-center justify-end" >
       <div class="">ราคารวม : <span id="sub-total"><?php echo $totalprice?></span> ฿</div>
-      <button class="btn w-32 bg-pink-200 rounded-2xl p-2">ยืนยัน</button>
+      <button onclick="cartemptycheck()" class="btn w-32 bg-pink-200 rounded-2xl p-2">ยืนยัน</button>
     </div>
 
+    <!-- make and order check -->
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
+        <div class="bg-white rounded-lg p-20 flex flex-col shadow-lg">
+            <div id="popup-message" class="text-center mb-4">ต้องการยืนยันการสั่งอาหารหรือไม่ ?<p id="sub-total"></p></div>
+            <div class = "flex flex-row justify-center items-center gap-4">
+                <button id="confirm-btn" onclick="confirmSubmission()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">Yes</button>
+                <button id="cancel-btn" onclick="togglePopup()" class="bg-red-400 hover:bg-red-500 text-white py-2 px-8 rounded-full">No</button>
+            </div>
+        </div>
+    </div>
+    
+     <!-- cart empty -->
+     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="input_error">
+        <div class="bg-white rounded-lg p-20 shadow-lg flex flex-col text-center">
+            <p class="text-center mb-4">ตะกร้าสั่งซื้อว่าง! ต้องการกลับไปยังหน้าเลือกซื้ออาหารหรือไม่?</p>
+            <div class = "flex flex-row justify-center items-center gap-4">
+              <button id="confirm-btn" onclick="backtomenu()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">Yes</button>
+              <button id="cancel-btn" onclick="toggleinputerror()" class="bg-red-400 hover:bg-red-500 text-white py-2 px-8 rounded-full">No</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- submit sucess -->
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="sucess-overlay">
+        <div class="bg-white rounded-lg flex flex-col justify-center items-center p-20 shadow-lg">
+            <p class="text-center mb-4">สั่งอาหารสำเร็จ! อดใจรอสักนิด ความอร่อยกำลังเดินทางไปหาคุณ...</p>
+            <a href=""><button onclick="togglesuccess()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button></a>
+        </div>
+    </div>
+        <!-- ../2_order/cus_order.php?tableNum=<?php echo $_GET['tableNum']?> -->
 
   </body>
 
   <script>
+  function cartemptycheck() {
+    var totalItems = $('.amount-input').length;
+    var cartEmpty = true;
+
+    $('.amount-input').each(function() {
+        var amount = parseInt($(this).val());
+        if (amount > 0) {
+            cartEmpty = false;
+            return false; // Exit the loop early if a non-empty item is found
+        }
+    });
+
+    if (cartEmpty) {
+      toggleinputerror(); // Show the cart empty message
+    } else {
+      // Proceed with submission
+      togglePopup();
+    }
+  }
+
+
+  function backtomenu() {
+    window.location.href = '../1_home/home_customer.php?tableNum=<?php echo $_GET['tableNum']?>';
+  }
+
+
+  function togglePopup() {
+        var popup = document.getElementById('popup-overlay');
+        popup.classList.toggle('hidden');
+  }
+
+
+  function toggleinputerror() {
+          var popuperr = document.getElementById('input_error');
+          popuperr.classList.toggle('hidden');
+  }
+
+
+  function togglesuccess() {
+      var popupsucess = document.getElementById('sucess-overlay');
+      popupsucess.classList.toggle('hidden');
+  }
+
+
+  function confirmSubmission() {
+    var tableNum = <?php echo $_GET['tableNum']; ?>;
+    var orders = [];
+
+    $('.amount-input').each(function() {
+        var amount = $(this).val();
+        var price = $(this).data('price');
+        var menuName = $(this).closest('div').prev().prev().prev().prev().find('p').html();
+        var menuType = $(this).closest('div').prev().prev().prev().find('p').html();
+        var size = $(this).closest('div').prev().prev().find('p').html();
+
+        orders.push({
+            amount: amount,
+            price: price,
+            menuName: menuName,
+            menuType: menuType,
+            size: size
+        });
+    });
+
+    $.ajax({
+        url: 'submit_order.php',
+        type: 'POST',
+        data: { tableNum: tableNum, orders: JSON.stringify(orders) },
+        success: function(response) {
+            console.log(response);
+            togglesuccess(); // Show success message
+        },
+        error: function(xhr, status, error) {
+            alert('Error submitting order');
+        }
+    });
+  }
+
+  
+// + - item  amount  button
     $('body').on('click', '.btn-plus, .btn-minus', function() {
         var inputId = '#cake-number_' + $(this).data('id');
         var input = $(inputId);

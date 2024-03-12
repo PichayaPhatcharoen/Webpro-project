@@ -39,6 +39,9 @@
 
     <div class="mx-auto max-w-screen-lg ml:auto mb-10">
         <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
+
+
+
         <div class="item_1 container flex justify-around lg:justify-between mb-10">
             <div>
                 <div class="flex flex-col">
@@ -50,7 +53,7 @@
                 </div>
             </div>
             <div class="pl-4 pr-4 flex items-center justify-center bg-status-prep rounded-full w-32 sm:w-48">
-                <div id="status">กำลังจัดเตรียมอาหาร...</div>
+                <div id="status">กำลังจัดเตรียมอาหาร..</div>
             </div>
         </div>
         <div class="item_2 container flex justify-around lg:justify-between mb-10">
@@ -67,6 +70,8 @@
                 <div id="status">เตรียมอาหารเสร็จสิ้น</div>
             </div>
         </div>
+
+    
     </div>
     <footer class=" fixed bottom-0 left-0 right-0 p-4 flex justify-end items-center">
         <p class="mr-4">ยอดรวม: 800 ฿</p>
