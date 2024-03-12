@@ -82,23 +82,6 @@
     <button onclick="ShowConfirm()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
     </div>
 
-    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
-        <div class="bg-white rounded-lg p-20 flex flex-col shadow-lg">
-            <div id="popup-message" class="text-center mb-4">คุณต้องการยืนยันการชำระเงินหรือไม่ ยอดรวม: <?php echo $total_price; ?> ฿</p>
-            <div class="flex flex-row justify-center items-center mt-4 gap-4">
-                <button onclick="OK()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">Yes</button>
-                <button onclick="hideConfirm()" class="bg-red-400 hover:bg-red-500 text-white py-2 px-8 rounded-full">No</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="success">
-        <div class="bg-white rounded-lg p-20 shadow-lg">
-            <p class="text-center mb-4">กรุณารอสักครู่ . . . </p>
-            <!-- <button onclick="hideSuccess()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button> -->
-        </div>
-    </div>
-
     <script>
         function ShowConfirm() {
             document.getElementById("popup-overlay").classList.remove("hidden");
@@ -116,47 +99,6 @@
         function OK() {
             showSuccess();
         }
-
-        function fetchData() {
-        let tableNum = <?php echo isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1; ?>;
-        let url = `fetchJ_order.php?tableNum=${tableNum}`;
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-                let ordersHtml = "";
-                let total_price = 0;
-                data.forEach(order => {
-                    total_price += order.price * order.amount;
-
-                    let statusClass = order.state == 'เตรียมอาหารเสร็จสิ้น' ? 'bg-status-done' : 'bg-status-prep';
-
-                    ordersHtml += `
-                        <div class="item_1  grid grid-cols-2  mb-10">
-                            <div class="">
-                                <div class="flex flex-col mx-16">
-                                    <div id="Item"><p class="font-bold text-xl">${order.menu_name}</p></div>
-                                    <div id="price" class="text-md grid grid-cols-2 justify-between">
-                                        <p id="price" class="text-red-400 text-left">${order.price} ฿</p>
-                                        <p id="amount" class="text-gray-500 text-right">x${order.amount}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div id="status" class="mx-16 pr-4 flex items-center justify-center ${statusClass} rounded-full w-32 sm:w-48">
-                                <div class="pl-4">${order.state}</div>
-                            </div>
-                        </div>
-                    `;
-                });
-
-                document.querySelector(".grid-rows-2").innerHTML = ordersHtml;
-                document.querySelector(".my-20 p").innerText = `ยอดรวม: ${total_price} ฿`;
-            })
-            .catch(error => console.error('Error:', error));
-        }
-
-    setInterval(fetchData, 10000); // Fetch data every 10 seconds
-    fetchData();
     </script>
     </body>
 

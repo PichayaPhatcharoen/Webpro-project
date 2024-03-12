@@ -81,25 +81,39 @@
     <div>
         <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
     </div>
-    <button onclick="ShowConfirm()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+    <button onclick="Checkinput()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+    </div>
+    
+    <!-- error to submit -->
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="input_error">
+        <div class="bg-white rounded-lg p-20 shadow-lg flex flex-col text-center">
+            <p class="text-center mb-4">มีรายการอาหารที่ลูกค้ายังไม่ได้รับ!!</p>
+            <div><button onclick="toggleinputerror()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button></div>   
+        </div>
+    </div>
+
+
+    <!-- able to submit -->
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
+        <div class="bg-white rounded-lg p-20 flex flex-col shadow-lg">
+            <div id="popup-message" class="text-center mb-4"></div>
+            <div class = "flex flex-row justify-center items-center gap-4">
+                <button id="confirm-btn" onclick="confirmSubmission()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">Yes</button>
+                <button id="cancel-btn" onclick="togglePopup()" class="bg-red-400 hover:bg-red-500 text-white py-2 px-8 rounded-full">No</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="sucess-overlay">
+        <div class="bg-white flex flex-col justify-center items-center  rounded-lg p-20 shadow-lg">
+            <p class="text-center mb-4">ชำระเงินสำเร็จ</p>
+            <a href="emp_order.php"><button onclick="togglesuccess()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button></a>
+        </div>
     </div>
 
     
-    <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
-        <div class="bg-white rounded-lg p-20 shadow-lg">
-            <button onclick="hidePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button>
-        </div>
-    </div>
-    <script>
-        function showPopup() {
-            document.getElementById("popup-overlay").classList.remove("hidden");
-        }
-
-        function hidePopup() {
-            document.getElementById("popup-overlay").classList.add("hidden");
-        }
-        
-    </script>
+    
+    
 </body>
 
 </html>
