@@ -1,4 +1,5 @@
 <?php
+    $tableNum = $_GET['tableNum'];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $reviewText = $_POST['reviewText'];
@@ -18,7 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt = $pdo->prepare('INSERT INTO reviews (name, review_text, photo_url) VALUES (?, ?, ?)');
     $stmt->execute([$name, $reviewText, $photoUrl]);
 
-    header('Location: review.php');
+    header('Location: review.php?tableNum=' . $tableNum);
+
     exit();
 }
 ?>

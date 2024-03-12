@@ -39,7 +39,7 @@
 <div class="bg-reviewpage md:mx-auto mb-10">
     <h1 class="text-center pt-8 pb-8 text-xl">รีวิวร้านอาหาร</h1>
     <div class="justify-center items-center mx-20 my-50 ">
-        <form id="reviewForm" action="submit_review.php" method="post" enctype="multipart/form-data">
+    <form id="reviewForm" action="submit_review.php?tableNum=<?php echo $_GET['tableNum']; ?>" method="post" enctype="multipart/form-data">
             <input type="text" class="border border-gray-900 rounded px-3 my-5" name="name" placeholder="ชื่อของท่าน" required><br>
             <div class="relative bg-text-area px-8 py-8 rounded-lg">
                 <textarea name="reviewText" class="px-3 py-1 rounded w-full h-full bg-text-area" placeholder="ร้านนี้อาหารอร่อยม้าก !" rows="8" required></textarea><br>
