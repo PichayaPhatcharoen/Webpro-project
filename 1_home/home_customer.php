@@ -1,9 +1,10 @@
-<?php include "../conn.php";?>
+<?php include "../conn.php"; 
+$tableNum = isset($_GET['tableNum']) ? $_GET['tableNum'] : 1;?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Home_customer</title>
 
     <!-- tailwind -->
