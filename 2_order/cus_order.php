@@ -116,6 +116,47 @@
         function OK() {
             showSuccess();
         }
+
+        function fetchData() {
+        let tableNum = <?php echo isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1; ?>;
+        let url = `fetchJ_order.php?tableNum=${tableNum}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                let ordersHtml = "";
+                let total_price = 0;
+                data.forEach(order => {
+                    total_price += order.price * order.amount;
+
+                    let statusClass = order.state == 'เตรียมอาหารเสร็จสิ้น' ? 'bg-status-done' : 'bg-status-prep';
+
+                    ordersHtml += `
+                        <div class="item_1  grid grid-cols-2  mb-10">
+                            <div class="">
+                                <div class="flex flex-col mx-16">
+                                    <div id="Item"><p class="font-bold text-xl">${order.menu_name}</p></div>
+                                    <div id="price" class="text-md grid grid-cols-2 justify-between">
+                                        <p id="price" class="text-red-400 text-left">${order.price} ฿</p>
+                                        <p id="amount" class="text-gray-500 text-right">x${order.amount}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="status" class="mx-16 pr-4 flex items-center justify-center ${statusClass} rounded-full w-32 sm:w-48">
+                                <div class="pl-4">${order.state}</div>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                document.querySelector(".grid-rows-2").innerHTML = ordersHtml;
+                document.querySelector(".my-20 p").innerText = `ยอดรวม: ${total_price} ฿`;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+    setInterval(fetchData, 10000); // Fetch data every 10 seconds
+    fetchData();
     </script>
     </body>
 
