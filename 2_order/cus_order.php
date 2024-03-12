@@ -38,69 +38,61 @@
     </nav>
 
     <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
-    <div class="grid grid-rows-2 justify-around gap-3">
 
-        <div class="item_1  grid grid-cols-2  mb-10">
-            <div class="">
-                <div class="flex flex-col mx-16">
-                    <div id="Item"><p class="font-bold text-xl">บานอฟฟี่</p></div>
-                    <div id="price" class="text-md flex flex-row gap-12">
-                        <p id="price" class="text-red-400">100 ฿</p>
-                        <p id="amount" class="text-gray-500">x4</p>
+    <?php  
+    $tableNum = isset($_GET['tableNum']) ? intval($_GET['tableNum']) : 1;
+    if ($tableNum < 1 || $tableNum > 6) {
+        $tableNum = 1;
+    }
+    $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
+    $stmt = $pdo->prepare("SELECT * FROM order_customer WHERE tableNum = :tableNum && ispaid = 'ยังไม่ได้ชำระ' ORDER BY order_datetime ASC");
+    $stmt->bindParam(':tableNum', $tableNum);
+    $stmt->execute();
+    $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $total_price = 0;
+    ?>
+
+    <div class="grid grid-rows-2 justify-around gap-3">
+        <?php foreach ($orders as $order): 
+            $total_price += $order['price'] * $order['amount'];
+            ?>
+            <div class="item_1  grid grid-cols-2  mb-10">
+                <div class="">
+                    <div class="flex flex-col mx-16">
+                        <div id="Item"><p class="font-bold text-xl"><?php echo $order['menu_name']; ?></p></div>
+                        <div id="price" class="text-md grid grid-cols-2 justify-between">
+                            <p id="price" class="text-red-400 text-left"><?php echo $order['price']; ?> ฿</p>
+                            <p id="amount" class="text-gray-500 text-right">x<?php echo $order['amount']; ?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="status" class="mx-16 pr-4 flex items-center justify-center bg-status-prep rounded-full w-32 sm:w-48">
-                <div class="pl-4">กำลังจัดเตรียมอาหาร..</div>
-            </div>
-        </div>
-        <div class="item_1  grid grid-cols-2  mb-10">
-            <div class="">
-                <div class="flex flex-col mx-16">
-                    <div id="Item"><p class="font-bold text-xl">บานอฟฟี่</p></div>
-                    <div id="price" class="text-md flex flex-row gap-12">
-                        <p id="price" class="text-red-400">100 ฿</p>
-                        <p id="amount" class="text-gray-500">x4</p>
-                    </div>
+                <div id="status" class="mx-16 pr-4 flex items-center justify-center <?php echo $order['state'] == 'เตรียมอาหารเสร็จสิ้น' ? 'bg-status-done' : 'bg-status-prep' ?> rounded-full w-32 sm:w-48">
+                    <div class="pl-4"><?php echo $order['state']; ?></div>
                 </div>
             </div>
-            <div id="status" class="mx-16 pr-4 flex items-center justify-center bg-status-prep rounded-full w-32 sm:w-48">
-                <div class="pl-4">กำลังจัดเตรียมอาหาร..</div>
-            </div>
-        </div>
-        
-    
+        <?php endforeach; ?>
     </div>
+
 
     <div class="my-20 mx-4 flex flex-row items-center justify-end">
         <div>
-            <p class="mr-4">ยอดรวม: ฿</p>
+            <p class="mr-4">ยอดรวม: <?php echo $total_price; ?>฿</p>
         </div>
-        <button onclick="showPopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
+        <button onclick="TogglePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ชำระเงิน</button>
     </div>
-
-
-    <!-- <div class="my-20 mr-14 flex gap-8 flex- row items-center justify-end" >
-      <div class="">ราคารวม : <span id="sub-total"><?php echo $totalprice?></span> ฿</div>
-      <button onclick="cartemptycheck()" class="btn w-32 bg-pink-200 rounded-2xl p-2">ยืนยัน</button>
-    </div> -->
-
 
     <div class="fixed top-0 left-0 right-0 bottom-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden" id="popup-overlay">
         <div class="bg-white rounded-lg p-20 shadow-lg">
             <p class="text-center mb-4">กรุณารอสักครู่ . . . </p>
-            <button onclick="hidePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button>
+            <button onclick="TogglePopup()" class="bg-blue-400 hover:bg-blue-500 text-white py-2 px-8 rounded-full">ยืนยัน</button>
         </div>
     </div>
 
     <script>
-        function showPopup() {
-            document.getElementById("popup-overlay").classList.remove("hidden");
+        function TogglePopup() {
+            document.getElementById("popup-overlay").classList.toggle("hidden");
         }
 
-        function hidePopup() {
-            document.getElementById("popup-overlay").classList.add("hidden");
-        }
     </script>
 </body>
 

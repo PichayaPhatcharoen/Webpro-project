@@ -8,7 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');
 
     // Insert the order into the order_customer table
-    $stmt = $pdo->prepare("INSERT INTO order_customer (tableNum, menu_type, menu_name, size, amount, price, state, order_datetime) VALUES (?, ?, ?, ?, ?, ?, 'กำลังจัดเตรียมอาหาร..', NOW())");
+    $stmt = $pdo->prepare("INSERT INTO order_customer (tableNum, menu_type, menu_name, size, amount, price, state, order_datetime, ispaid) VALUES (?, ?, ?, ?, ?, ?, 'กำลังจัดเตรียมอาหาร..', NOW(),'ยังไม่ได้ชำระ')");
     foreach ($orders as $order) {
         $stmt->execute([$tableNum, $order['menuType'], $order['menuName'], $order['size'], $order['amount'], $order['price']]);
     }
