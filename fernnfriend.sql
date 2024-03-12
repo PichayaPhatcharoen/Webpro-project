@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 12, 2024 at 08:30 PM
+-- Generation Time: Mar 12, 2024 at 10:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,59 +24,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order_customer`
+-- Table structure for table `employee`
 --
 
-CREATE TABLE `order_customer` (
-  `order_id` int(11) NOT NULL,
-  `tableNum` int(11) NOT NULL,
-  `menu_type` enum('bakery','drink') NOT NULL,
-  `menu_name` varchar(255) NOT NULL,
-  `size` enum('small','medium','large') DEFAULT NULL,
-  `amount` int(11) NOT NULL,
-  `price` decimal(10,2) DEFAULT NULL,
-  `state` enum('กำลังจัดเตรียมอาหาร..','เตรียมอาหารเสร็จสิ้น') NOT NULL,
-  `order_datetime` datetime DEFAULT current_timestamp(),
-  `ispaid` enum('ชำระแล้ว','ยังไม่ได้ชำระ') NOT NULL DEFAULT 'ยังไม่ได้ชำระ'
+CREATE TABLE `employee` (
+  `id` int(11) DEFAULT NULL,
+  `FirstName` varchar(50) DEFAULT NULL,
+  `LastName` varchar(50) DEFAULT NULL,
+  `NickName` varchar(50) DEFAULT NULL,
+  `Tel` varchar(50) DEFAULT NULL,
+  `Username` varchar(50) DEFAULT NULL,
+  `Password` varchar(50) DEFAULT NULL,
+  `Position` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `order_customer`
+-- Dumping data for table `employee`
 --
 
-INSERT INTO `order_customer` (`order_id`, `tableNum`, `menu_type`, `menu_name`, `size`, `amount`, `price`, `state`, `order_datetime`, `ispaid`) VALUES
-(9, 6, 'bakery', 'วาฟเฟิลสกู้ปคิส', '', 1, 120.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 08:13:33', 'ยังไม่ได้ชำระ'),
-(10, 6, 'bakery', 'ชีสเค้กมะม่วง', '', 1, 130.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 08:13:33', 'ยังไม่ได้ชำระ'),
-(11, 6, 'drink', 'ชานมไข่มุกดั้งเดิม', 'medium', 1, 80.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 08:13:33', 'ยังไม่ได้ชำระ'),
-(12, 1, 'bakery', 'ราสเบอร์รี่เค้ก', '', 1, 110.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 08:13:59', 'ยังไม่ได้ชำระ'),
-(13, 1, 'bakery', 'ราสเบอร์รี่เค้ก', '', 1, 110.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 08:28:42', 'ยังไม่ได้ชำระ'),
-(14, 6, 'bakery', 'ราสเบอร์รี่เค้ก', '', 1, 110.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 20:21:34', 'ยังไม่ได้ชำระ'),
-(15, 6, 'bakery', 'ปังช็อกโกบานาน่า', '', 1, 65.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 20:21:34', 'ยังไม่ได้ชำระ'),
-(17, 6, 'bakery', 'ปังช็อกโกบานาน่า', '', 1, 65.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-12 20:40:40', 'ยังไม่ได้ชำระ'),
-(18, 6, 'bakery', 'เค้กส้มจี๊ด', '', 1, 85.00, 'เตรียมอาหารเสร็จสิ้น', '2024-03-12 20:41:36', 'ชำระแล้ว'),
-(20, 1, 'bakery', 'ราสเบอร์รี่เค้ก', '', 2, 110.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-13 02:28:39', 'ยังไม่ได้ชำระ'),
-(21, 1, 'bakery', 'สวีทตี้โดรายากิ', '', 4, 120.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-13 02:28:39', 'ยังไม่ได้ชำระ'),
-(22, 1, 'drink', 'ชานมไข่มุกดั้งเดิม', 'medium', 1, 80.00, 'กำลังจัดเตรียมอาหาร..', '2024-03-13 02:29:13', 'ยังไม่ได้ชำระ');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `order_customer`
---
-ALTER TABLE `order_customer`
-  ADD PRIMARY KEY (`order_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `order_customer`
---
-ALTER TABLE `order_customer`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+INSERT INTO `employee` (`id`, `FirstName`, `LastName`, `NickName`, `Tel`, `Username`, `Password`, `Position`) VALUES
+(1, 'สยาม', 'เมืองยิ้ม', 'สยาม', '080-567-1111', 'sayam', 'password', 'พนักงาน'),
+(2, 'สมหมาย', 'ประสิทธิ์', 'หมาย', '081-567-2222', 'sommai', 'password2', 'พ่อครัว'),
+(3, 'สมชาติ', 'วงศ์สุข', 'ชาติ', '082-567-3333', 'somchart', 'password3', 'พ่อครัว'),
+(4, 'สมรัก', 'สุขใจ', 'รัก', '083-456-4444', 'somrak', 'password4', 'พ่อครัว'),
+(5, 'สมรส', 'วงศ์รส', 'รส', '084-567-5555', 'somros', 'password5', 'พ่อครัว'),
+(6, 'สมศรี', 'ใจดี', 'ศรี', '085-123-4567', 'somsri', 'password6', 'พนักงาน'),
+(7, 'สมหมาย', 'ประสิทธิ์', 'หมาย', '085-234-5678', 'sommai', 'password7', 'พนักงาน'),
+(8, 'สมชาย', 'วงศ์สุข', 'ชาย', '085-345-6789', 'somchai', 'password8', 'พนักงาน'),
+(9, 'สมใจ', 'สุขใจ', 'ใจ', '085-456-7890', 'somjai', 'password9', 'พนักงาน'),
+(10, 'สมหวัง', 'สวัสดี', 'หวัง', '085-567-8901', 'somwang', 'password10', 'พนักงาน'),
+(11, 'สมใหม่', 'มากล้น', 'ใหม่', '085-678-9012', 'sommai', 'password11', 'พนักงาน'),
+(12, 'สมปอง', 'รุ่งเรือง', 'ปอง', '085-789-0123', 'sompong', 'password12', 'พนักงาน'),
+(13, 'สมหมี', 'สุดใจ', 'หมี', '085-890-1234', 'sommee', 'password13', 'พนักงาน'),
+(14, 'สมดี', 'เจริญสุข', 'ดี', '085-901-2345', 'somdi', 'password14', 'พนักงาน'),
+(15, 'สมฤดี', 'พรหมสุข', 'ฤดี', '085-012-3456', 'somrudee', 'password15', 'พนักงาน'),
+(16, 'สมสวย', 'อ่อนงาม', 'สวย', '085-123-4567', 'somsuai', 'password16', 'พนักงาน'),
+(17, 'สมสมาน', 'สุขประดิษฐ์', 'สมาน', '085-234-5678', 'somsaman', 'password17', 'พนักงาน'),
+(18, 'สมสู่', 'สุขสบาย', 'สมสู่', '085-345-6789', 'somsu', 'password18', 'พนักงาน'),
+(19, 'สมบูรณ์', 'สุขภาพ', 'บูรณ์', '085-456-7890', 'sombun', 'password19', 'พนักงาน'),
+(20, 'สมเกียรติ', 'ทวีสุข', 'เกียรติ', '085-567-8901', 'somkiat', 'password20', 'พนักงาน'),
+(NULL, 'เฟิร', 'เฟิร', 'เฟิร', '1234567890', 'fernfern', 'fern1234', 'พนักงาน'),
+(NULL, 'เฟิร', 'เฟิร', 'เฟิรร', '12345567890', 'fernfern', 'fern1234', 'พ่อครัว');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
