@@ -44,7 +44,14 @@
         <div><a id="table5" href="?tableNum=5" <?php if($tableNum == 5) echo 'class="underline"'; ?>>โต๊ะที่5</a></div>
         <div><a id="table6" href="?tableNum=6" <?php if($tableNum == 6) echo 'class="underline"'; ?>>โต๊ะที่6</a></div>
     </div>
-
+    <div class=" flex flex-row justify-center">
+        <div><img <?php echo 'src="../QR/Table1.png"'; ?>></img></div>
+        <div><img <?php  echo 'src="../QR/Table2.png"'; ?>></img></div>
+        <div><img <?php  echo 'src="../QR/Table3.png"'; ?>></img></div>
+        <div><img <?php echo 'src="../QR/Table4.png"'; ?>></img></div>
+        <div><img <?php echo 'src="../QR/Table5.png"'; ?>></img></div>
+        <div><img <?php echo 'src="../QR/Table6.png"'; ?>></img></div>
+    </div>
     <h1 class="text-center pt-8 pb-8 text-xl">รายการคำสั่งซื้ออาหาร</h1>
 
     <?php  
