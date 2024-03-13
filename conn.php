@@ -1,1 +1,1 @@
-<?php $pdo = new PDO('mysql:host=localhost;dbname=FernNFriend', 'root', '');?>
+<?php $pdo = new PDO('mysql:host=161.246.49.13; port=3824; dbname=fernnfriend', 'fern', 'fernnf');?>
