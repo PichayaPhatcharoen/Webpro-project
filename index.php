@@ -102,7 +102,7 @@
 
     <div class="container">
         <div class="login-box">
-            <img src="../1_home/elements/logo_1.png" alt="Logo">
+            <img src="./1_home/elements/logo_1.png" alt="Logo">
         </div>
         <h1>Fern n Friends Cafe</h1>
         <?php
@@ -113,7 +113,7 @@
             unset($_SESSION['error_message']);
         }
         ?>
-        <form class="form-container" action="login.php" method="POST">
+        <form class="form-container" action="index.php" method="POST">
             <div class="form-group">
                 <label for="username">ชื่อผู้ใช้งาน</label>
                 <input type="text" id="username" name="username" required>
@@ -129,7 +129,7 @@
 </html>
 
 <?php
-include '../conn.php'; // Include the database connection file
+include 'conn.php'; // Include the database connection file
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
@@ -149,19 +149,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($employee) {
         $_SESSION['username'] = $username;
-        header('Location: ../1_home/home_employee.php');
+        header('Location: ./1_home/home_employee.php');
         exit();
     } elseif ($manager) {
         $_SESSION['username'] = $username;
-        header('Location: home_manager.php');
+        header('Location: ./4_emp_manager/home_manager.php');
         exit();
     } elseif($chef) {
         $_SESSION['username'] = $username;
-        header('Location: ../2_order/chef_order.php');
+        header('Location: ./2_order/chef_order.php');
         exit();
     }else {
         $_SESSION['error_message'] = "ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง";
-        header("Location: login.php");
+        header("Location: index.php");
         exit();
     }
 }
