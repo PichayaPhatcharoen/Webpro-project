@@ -15,6 +15,11 @@
     <title>ORDER</title>
 </head>
 <body>
+    <script>
+        setTimeout(function(){
+            location.reload();
+        }, 10000); 
+    </script>
     <nav>
         <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
             <div class="flex space-x-6 items-center">
@@ -24,6 +29,9 @@
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
+                <a href="../1_Home/home_customer.php?tableNum=<?php echo $_GET['tableNum'] ?>">
+                    <p class="menuho2">HOME</p>
+                </a>
                 <a href="">
                     <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
                 </a>
@@ -98,6 +106,9 @@
         function OK() {
             showSuccess();
         }
+        setTimeout(function(){
+        location.reload();
+        }, 10000); 
     </script>
     </body>
 

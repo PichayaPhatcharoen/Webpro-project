@@ -196,8 +196,11 @@ $tableNum = isset($_GET['tableNum']) ? $_GET['tableNum'] : 1;?>
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
+                <a href="">
+                    <p class="menuho">HOME</p>
+                </a>
                 <a href="../2_order/cus_order.php?tableNum=<?php echo $_GET['tableNum'] ?>">
-                    <p class="menuho">รายการคำสั่งซื้ออาหาร</p>
+                    <p class="menuho2">รายการคำสั่งซื้ออาหาร</p>
                 </a>
                 <a href="../5_reviewpage/review.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <p class="menuho2">รีวิวอาหาร</p>

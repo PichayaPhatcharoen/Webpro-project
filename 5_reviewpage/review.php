@@ -22,6 +22,9 @@
                 <p>Fern n Friends Cafe</p>
             </div>
             <div class="flex space-x-12">
+                <a href="../1_Home/home_customer.php?tableNum=<?php echo $_GET['tableNum'] ?>">
+                    <p class="menuho2">HOME</p>
+                </a>
                 <a href="../2_order/cus_order.php?tableNum=<?php echo $_GET['tableNum'] ?>">
                     <p class="menuho2">รายการคำสั่งซื้ออาหาร</p>
                 </a>

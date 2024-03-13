@@ -12,6 +12,11 @@
     <title>CUSTOMER_ORDER</title>
 </head>
 <body class="bg-cus-order">
+    <script>
+        setTimeout(function(){
+            location.reload();
+        }, 10000); 
+    </script>
     <header>
         <div class="header2 bg-cus-order">
             <div class="flex items-center justify-between w-full pr-6 pl-6 pt-2">
@@ -105,6 +110,9 @@
             xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
             xhr.send("order_id=" + orderId); // Send the saved order id
         }
+        setTimeout(function(){
+        location.reload();
+        }, 10000); 
     </script>
 
     
