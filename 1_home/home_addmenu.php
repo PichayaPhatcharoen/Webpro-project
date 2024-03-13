@@ -102,7 +102,7 @@
 <body>
     <!-- exit X -->
     <div class="exit text-left pt-10 pl-10">
-        <a href="home_manager.php">
+        <a href="home_employee.php">
             <p class="text-4xl font-light z00m2">x</p>
         </a>
     </div>
